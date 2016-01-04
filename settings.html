@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<span class="bag_to_home">
+            	<a href="{$homeUrl}"><i></i></a>
+            </span>
+			<h2>{$LC_SETTINGS}</h2>
+           	
+		</div>
+        
+		
+		<div class="wrap">
+            <div class="settings_item">
+            	<ul class="settings_list">
+                	<li><a href="{$homeUrl}index.php?com=index&t=currency">{$LC_CURRENCY}<b>{$curCurrency}</b><span class="arrow_d account_setting"><i><i></i></i></span></a></li>
+                    <li><a href="{$homeUrl}index.php?com=index&t=language">{$LC_LANGUAGE}<b>{$curLanguage}</b><span class="arrow_d account_setting"><i><i></i></i></span></a></li>
+                </ul>
+            </div>
+			{if 1>2}
+            <div class="settings_item">
+            	<ul class="settings_list">
+                	<li>Notification<span class="arrow_d account_setting"><i><i></i></i></span></li>
+                    <li>Security & Privacy<span class="arrow_d account_setting"><i><i></i></i></span></li>
+                    <li>Terms & Conditions<span class="arrow_d account_setting"><i><i></i></i></span></li>
+                    <li>Share this App<span class="arrow_d account_setting"><i><i></i></i></span></li>
+                    <li>Rate Newchic<span class="arrow_d account_setting"><i><i></i></i></span></li>
+                </ul>
+            </div>
+            <div class="settings_item">
+            	<ul class="settings_list">
+                	<li>Clear Cache<b>3 MB</b><span class="arrow_d account_setting"><i><i></i></i></span></li>
+                </ul>
+            </div>
+			{/if}
+		</div>
+	</div>
+</div>
+
+{include file="libs/common/foot.html"}
+</body>
+</html>

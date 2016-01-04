@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="main_box">
+			<div class="index_header_top header_top">
+				<span class="prev">
+					<i class="arrow_c"><i><i></i></i></i>
+				</span>
+				<h2>Question</h2>
+	             
+			</div>
+		
+			<div class="wrap">
+				<div class="question_item_list">
+					{if $questionInfo}
+	            	<ul>
+	            		{include file="libs/question/question_item.html"}
+	                </ul>
+	                {else}
+	                <span class="nodata"><b class="icon"><i></i></b>No Question</span>
+	                {/if}
+	            </div>
+			</div>
+        </div>
+	</div>
+</div>
+<div class="fixed_ask_question">
+    <a class="quick_to_ask" href="/ask-question-{$params.products_id}.html">Ask a question</a>
+</div>
+
+{include file='libs/common/foot.html'}
+<script>
+var _total = "{$params.totalPage}";
+var _pid = "{$params.products_id}";
+</script>
+<script src="/{$View->getValue('root_path')}/js/question.js"></script>
+</body>
+</html>

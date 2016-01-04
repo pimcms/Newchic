@@ -1,0 +1,18 @@
+<li>
+	<a class="a_wrap" href="{$item.url}" title="{$item.products_name}">
+		<span class="img">		
+			<img class="bg_lazy" src="/templates/wap/images/grey.gif" data-original="{$item.image_url}" alt="{$item.products_name}"/>
+			{if $item.discount > 5}
+			<strong class="arrow_a">
+				<i></i>
+				<s class="discount">{$item.discount}</s>
+				<s class="percent">%</s>
+				<s class="off">off</s>
+			</strong>
+			{/if}
+		</span>
+		<span class="title">{$item.products_name}</span>
+		<span class="price" oriprice="{$item.final_price}">{$item.format_final_price}</span>
+	</a>
+	<a class="addwish {if $item.wishlist}active{/if}" pid="{$item.products_id}"><i></i></a>
+</li>

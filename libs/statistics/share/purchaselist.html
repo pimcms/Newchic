@@ -1,0 +1,15 @@
+{foreach from=$productInfo item=item}
+<li>
+    <input type="hidden" id="hid" value="{$item.products_id}"/>
+    <input type="hidden" id="name" value="{$item.products_name}"/>
+	<span class="img"><a href="{$item.url}"><img src="{$item.image_url}"></a></span>
+    <span class="title"><a href="{$item.url}" title="{$item.products_name}">{$item.products_name|truncate:"40":" ..."}</a></span>
+    <span class="price">{$item.format_final_price}</span>
+    <span class="date">{$item.date_purchased|date_format:'%b %d,%Y'}</span>
+    <span class="select" id="select"><i></i></span>
+</li>
+{/foreach}
+
+
+
+ 

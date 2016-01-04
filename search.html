@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+    	<div class="main_box">
+            <div class="index_header_top header_top header_top_fixed">
+                <span class="prev">
+                    <i class="arrow_c"><i><i></i></i></i>
+                </span>
+                <h2>"{$keywords}" {$total} {$SR_SEARCH_RESULT}</h2>
+                <span class="sequence"></span>
+            </div>
+            <div class="search_item_h">
+                <ul>
+                    {foreach from=$sortList item=item}
+                    <li onClick="location = '{$item.url}'" {if $currentSort == $item.value}class="active"{/if}>{$item.name}<i></i></li>
+                    {/foreach}
+                </ul>
+            </div>
+            
+            <div class="wrap wrap_nav_box">
+                <div class="categories_list_nav">
+                    <ul>
+                        {foreach from = $catTreePath item = cat_child_item}
+                        <li><a href="{$cat_child_item.url}" data-cat-id="{$cat_child_item.categories_id}">{$cat_child_item.categories_name}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="goodlist">
+                    <div class="itembox">
+                        {include file="libs/category/item.html"}
+                    </div>
+                </div>
+            </div>
+         </div>
+	</div>
+</div>
+{include file='libs/common/bottom_menu.html'}
+{include file='libs/common/foot.html'}
+<script>
+var _totalPage = '{$totalPage}';
+var _keywords = '{$params.keywords}';
+var _cat_id = '{$params.cat_id}';
+var _filters = '{$params.filters}';
+var _style = '{$params.style}';
+var _sort = '{$params.sort}';
+var _pagesize = '{$params.pagesize}';
+var _pfrom = '{$params.pfrom}';
+var _pto = '{$params.pto}';
+</script>
+{literal}
+<script>
+$(document)
+.ready(function(){
+	$.newchic_item.loadHeadCart();	
+})
+img_lazyload();
+</script>
+{/literal}
+<script src="/{$View->getValue('root_path')}/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="main_box">
+			<div class="index_header_top header_top">
+				<span class="prev">
+					<i class="arrow_c"><i><i></i></i></i>
+				</span>
+				<strong class="size_chart_nav points_nav"><span class="active" data-src="/index.php?com=account&t=point&type=1&isAjax=2" id="yuan">{$LA_POINT_UNIT}</span><span data-src="index.php?com=account&t=exchangeCoupon" id="exchange">{$LA_POINT_EXCHANGE}</span></strong>
+	           
+			</div>
+			<div class="wrap">
+	            <div class="account_item">
+	            	
+	                {include file="libs/account/my_points.html"}
+	                
+	            </div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" value="{$LA_EXCHANGE_COUPON_NOTE}" id="exchange_note"/>
+	<input type="hidden" value="{$LA_CONFIRM_HAS_NOT_CONFIRMED_WAP}" id="confirm_tip"/>
+</div>
+
+{include file="libs/common/foot.html"}
+<script src="/{$View->getValue('root_path')}/js/jquery.form2.js" ></script>
+
+<script type="text/javascript">
+	var point_type = 1;
+</script>
+
+<script src="/{$View->getValue('root_path')}/js/point.js"></script>
+
+</body>
+</html>

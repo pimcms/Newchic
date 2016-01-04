@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+        <div class="main_box">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>Coupons</h2>
+           
+		</div>
+		<div class="wrap">
+            <div class="account_item">
+                <div class="account_coupon">
+                	<ul class="account_tabs_title">
+                    	<li class="active" data-id="0">{$LA_COUPON_STATUS_NOTUSED}</li>
+                        <li data-id="1">{$LA_COUPON_STATUS_USED}</li>
+                        <li data-id="3">{$LA_COUPON_STATUS_EXPIRE}</li>
+                    </ul>
+                    <div class="account_tabs_box">
+                    	<div class="list" style="display:block">
+                        	<ul class="coupon_item_list">
+                                {include file='libs/account/couponlist.html'}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              	<input type="hidden" id="filter" name="filter" value="0"/>
+                <input type="hidden" id="total" name="total" value="{$total}"/>
+            </div>
+		</div>
+    </div>
+	</div>
+</div>
+
+{include file="libs/common/foot.html"}
+<script src="{$View->getValue('root_path')}/js/coupon.js"></script>
+
+</body>
+</html>

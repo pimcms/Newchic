@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	{include file="libs/common/meta.html"}
+	<meta property="og:image"  content="{$shareImage}" />
+	<script type="text/javascript" src="/cache/newchic_static_cache/currency_huilv.js"></script>
+	</head>
+
+	<body>
+		<div class="container det_container">
+			<div class="main">
+				<div class="wrap">
+					<div class="goods_detail">
+						<div class="head_nav header_top_fixed">
+							<span class="prev"><a href="javascript:;" onClick="$.newchic_item.historyGo();"><i class="arrow_c"><i><i></i></i></i></a></span>
+							<h4 class="head_nav_title th_font">{$LP_PRODUCT_DETAILS}</h4>
+							<a class="detail_serach" href="javascript:;"><span class="i_search "></span></a>
+						</div>
+						
+						<!-- 产品图片展示块 -->
+						{include file = "libs/product/product_image.html"}
+						<!-- 产品图片展示块 End -->
+						
+						<!-- 产品导航块 -->
+						{include file = "libs/product/product_inhere.html"}
+						<!-- 产品导航块 End -->
+						
+						<div class="wrap goods_top">
+							<input id='products_id' type="hidden" value='{$productInfo.products_id}' />
+							<input id='products_url' type="hidden" value='{$productInfo.url}' />
+							<input id='share_image' type="hidden" value='{$shareImage}' />
+							<input id='sku' type="hidden" value='{$productInfo.sku}' />
+							<input id='products_name' type="hidden" value='{$productInfo.products_name}' />
+
+							<h3 class="title th_font">{$productInfo.products_name}</h3>
+							<div class="sec_pri det_clearfix">
+								<span class="price price_currency" oriprice="{$productInfo.ori_final_price}">{$currencyPrefix}{if $currentCurrency eq "RUB"}{$productInfo.final_price|string_format:'%d'}{else}{$productInfo.final_price|string_format:'%.2f'}{/if}</span>
+								<span class="old_price" oriprice="{$productInfo.ori_products_price}">{$productInfo.format_products_price}</span>
+							</div>
+							<small class="StockMessage">{$productInfo.stockMessage}</small>
+						</div>
+						
+						<!-- 产品属性 -->
+						{include file = 'libs/product/product_attrs.html'}
+						<!-- 产品属性 End -->
+
+						<div class="det_option">
+							<div class="op_btns det_clearfix">
+								<button class="add_bag_btn">{$LP_ADD_TO_BAG}</button>
+								<button class="add_wish_btn" pid="{$productInfo.products_id}">{$LP_ADD_WISHLIST}</button>
+							</div>
+							<div class="op_share">
+								<dl class="det_clearfix">
+									<dt>{$LC_WAP_SHARE_ITEM}:</dt>
+									<dd>
+										<ul class="det_clearfix">
+											<li class="i_fb"><a href="https://www.facebook.com/sharer/sharer.php?app_id=1724895177738454&sdk=joey&u={$productInfo.url}&display=popup&ref=plugin&src=share_button"></a></li>
+											<li class="i_pt"><a href="https://www.pinterest.com/pin/create/bookmarklet/?media=&url={$productInfo.url}"></a></li>
+											<li class="i_tw"><a href="http://twitter.com/home?status=STATUS"></a></li>
+											<li class="i_pv"><a href="http://www.polyvore.com/cgi/clipper.form?ref={$productInfo.url}"></a></li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<div class="det_askq">
+								<a href="{$productInfo.questions_url}">
+								<small>{$LP_ASK_A_QUESTION}</small>
+								<span class="arrow_d">
+									<i>
+										<i></i>
+									</i>
+								</span>
+								</a>
+							</div>
+						</div>
+
+						<!-- Description -->
+						<div class="goods_item description">
+							<h4 class="title">{$LP_ERROR_TYPE_DESC}</h4>
+							<div class="description_info">
+								<p>{$productInfo.description}</p>
+							</div>
+							<span class="detail_info_more"><a href="{$homeUrl}index.php?com=product&t=getDesc&products_id={$productInfo.products_id}">{$LP_READ_MORE} &gt;</a></span>
+						</div>
+						<!-- Description End -->
+						
+						<!-- Reviews  -->
+						{include file="libs/product/product_review.html"}
+						<!-- Reviews End -->
+						
+						<!-- You may also like -->
+						{include file = 'libs/product/product_alsolike.html'}
+						<!-- you may also like End -->
+						
+						<!-- Image Show -->
+						{include file="libs/product/product_image_show.html"}
+						<!-- Image Show End -->
+						
+						<!-- Product Other Item -->
+						{include file = 'libs/product/product_other.html'}
+						<!-- Product Other Item End -->
+						
+						
+						<!-- Product Foot -->
+						{include file = 'libs/product/product_foot.html'}
+						<!-- Product Foot End -->
+						
+					</div>
+				</div>
+			</div>			
+		</div>
+
+		{include file = 'libs/common/foot.html'}
+		<script src="/{$View->getValue('root_path')}/js/jquery.cookie.js"></script>
+		<script src="/{$View->getValue('root_path')}/js/product.js"></script>
+		<script src="/{$View->getValue('root_path')}/js/share.js"></script>
+		<script src="/{$View->getValue('root_path')}/js/review.js"></script>
+		<script type="text/javascript">
+		var cur_currency = "{$currentCurrency}";
+		var JS_VIEW_CART = '{$LC_CART_VIEW}';
+		var JS_ADD_ITEM = '{$LP_WAP_ITEM_ADDED_TO_CART}';
+		</script>
+		{literal}
+		<script>
+		$(document)
+		.ready(function(){
+			$.newchic_item.loadHeadCart();
+		});
+		</script>
+		{/literal}
+		{include file='libs/search/search.html'}
+	</body>
+
+</html>

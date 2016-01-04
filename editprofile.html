@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LA_EDIT_PROFILE}</h2>
+            <span class="righttextbtn" onClick="saveEditprofile(this);">{$LC_SAVE}</span>
+		</div>
+		
+		<div class="wrap">
+			<div class="account_item">
+            	<ul class="account_editprofile">
+                	<li>{$LA_CHANGE_PHOTO}<span class="img"><input id="imageFiles" class="upload_input" type="file" value=""  name="upload_avatars" msg1="{$LA_UNVALID_IMAGE}" msg2="{$LA_UPLOAD_IMAGE_ERROR}"><img src="{$personalInfo.avatar_url}"></span><span class="arrow_d account_setting"><i><i></i></i></span></li>
+                	<form method="post"  id='personalForm'>
+                    <li>{$LA_FIRST_NAME}<input type="text" class="validate inputchang" rule="username" value="{$personalInfo.firstname}" dvalue="Fisrt Name"  id="firstname" name="firstname" msg="{$LA_FIRSTNAME_TOO_SHORT}"></li>
+                    <li>{$LA_LAST_NAME}<input type="text" class="validate inputchang" rule="username" value="{$personalInfo.lastname}" dvalue="Last Name"  id="lastname" name="lastname" msg="{$LA_LASTNAME_TOO_SHORT}"></li>
+                    <li>{$LA_NICK_NAME}<input type="text" class="validate inputchang" rule="username" value="{$personalInfo.nickname}" dvalue="Nickname"  id="nickname" name="nickname" msg="{$LA_NICKNAME_UNVALID}" err="{$LA_NICKNAME_LENGTH}"></li>
+                    <li>{$LA_ACCOUNT_TEL}<input type="text" class="inputchang" rule="phone" value="{$personalInfo.telephone}" id="telephone" name="telephone" msg="{$LA_UNVALID_TEL}"></li>
+                    <li>Fax Number<input type="text" class="inputchang" rule="fax" value="{$personalInfo.fax}" id="fax" name="fax" msg="{$LA_UNVALID_FAX}"></li>
+                    </form>
+                </ul>
+			</div>
+		</div>
+	</div>
+</div>
+{include file="libs/common/foot.html"}
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/ajaxfileupload.js" ></script>
+<script src="{$View->getValue('root_path')}/js/setting.js"></script>
+</body>
+</html>

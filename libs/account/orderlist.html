@@ -1,0 +1,13 @@
+{foreach from = $ordersList item = item}
+<div class="orders_list">
+	<h4>{$LA_ORDER_NO}: {$item.orders_id}<i>{$item.orders_status_name}</i></h4>
+	<ul>
+		{assign var='productList' value =$item.productList}
+		{include file="libs/order/productlist.html"}
+		<li>{$LA_ORDER_DATE}: {$item.date_purchased|date_format:"%b %d, %Y"} <b class="money">{$LA_DS_TOTAL}: <i>{$item.grand_total}</i></b></li>
+		<li><a href="https://www.17track.net/m/en/result/post-details.shtml?pt=0&cm=0&cc=0&nums={$item.track_number}">{$LA_ORDER_TRACKING}<span class="arrow_d account_setting"><i><i></i></i></span></a></li>
+		<li><a href="/index.php?com=account&t=orderDetail&order_id={$item.orders_id}">{$LA_ORDER_VIEW_DETAILS}<span class="arrow_d account_setting"><i><i></i></i></span></a></li>
+	</ul>
+</div>
+{/foreach}
+

@@ -1,0 +1,86 @@
+<div class="goods_poa_item itemss">
+	   {if count($productInfo.attributes.attr_list.379.values) gt 0}
+       <div class="goods_item_attr" option_id="52">
+           <span class="title">{$LC_WAP_PRODUCT_COLOR}:</span>
+           <ul class="color">
+              {foreach name=info from=$productInfo.attributes.attr_list.379.values key=key item=item}  
+                {assign var=loop value=$smarty.foreach.info.index} 
+                   <li value_id="{$key}" class=""><img src="{$item.smallImage}" viewImage="{$item.viewImage}" largeImage="{$item.largeImage}" title="{$item.value_name}"><i></i></li>
+              {/foreach}
+          </ul>
+       </div>
+       {/if}
+       {if count($productInfo.attributes.attr_list.389.values) gt 0}
+       <div class="goods_item_attr" option_id="52">
+           <span class="title">{$LC_WAP_PRODUCT_COLOR}:</span>
+           <ul class="color">
+              {foreach name=info from=$productInfo.attributes.attr_list.389.values key=key item=item}  
+                {assign var=loop value=$smarty.foreach.info.index} 
+                   <li value_id="{$key}" class=""><img src="{$item.smallImage}" viewImage="{$item.viewImage}" largeImage="{$item.largeImage}" title="{$item.value_name}"><i></i></li>
+              {/foreach}
+          </ul>
+       </div>
+       {/if}
+       <div class="goods_item_attr" option_id="52">
+         {if !$bags}
+         	<div class="size_tran">
+           	<span class="title">{$LC_WAP_PRODUCT_SIZE}: <strong>{$sizeConversion.sizeType}</strong> <span class="arrow_d"><i><i></i></i></span></span>
+           	<ul id="table_size_type" data="{$sizeConversion.sizeType|default:'US'}">
+           		<li {if $sizeConversion.sizeType eq "US"}class="active"{/if} sizeType="US">US<i></i></li>
+				<li {if $sizeConversion.sizeType eq "CA"}class="active"{/if} sizeType="CA">CA</li>
+				<li {if $sizeConversion.sizeType eq "UK"}class="active"{/if} sizeType="UK">UK</li>
+				<li {if $sizeConversion.sizeType eq "AU"}class="active"{/if} sizeType="AU">AU</li>
+				<li {if $sizeConversion.sizeType eq "EU"}class="active"{/if} sizeType="EU">EU</li>
+				<li {if $sizeConversion.sizeType eq "FR"}class="active"{/if} sizeType="FR">FR</li>
+				<li {if $sizeConversion.sizeType eq "RU"}class="active"{/if} sizeType="RU">RU</li>
+				<li {if $sizeConversion.sizeType eq "IT"}class="active"{/if} sizeType="IT">IT</li>
+           	</ul>
+           </div>
+           <ul class="size size_ul">					                
+                 {foreach name=info from=$productInfo.attributes.attr_list.380.values key=key item=item} 
+                                 {assign var=loop value=$smarty.foreach.info.index}   
+                                 <li value_id="{$key}" size_name="{$item.value_name}" class="">
+				{if $currConversion[$item.value_name]}
+					{$currConversion[$item.value_name]}
+				{else}
+					{$item.value_name}
+				{/if}
+			   <s></s>
+			   </li>
+                                {/foreach}
+                           </ul>
+           {/if}
+		<!--尺寸转换模块start-->
+           <div class="size_detail_box">
+		{if $productInfo.sizeText}
+			{foreach from=$productInfo.sizeText item=item key=key}
+			<p val_name= "{$key}" class="sizeText" data-id="{$key}"><i class="close close_border">×</i><em class="conversion"></em><br/>{$item}</p>
+			{/foreach}
+		{/if}
+		</div>  
+		<!--尺寸转换模块end-->
+		
+		
+		<!--国际尺寸转换数据start-->
+			{if $sizeConversion}
+				{foreach from=$sizeConversion.sizeTable item=item key=key}
+					{foreach from=$item.text key=oriSize item=newSize}
+					<span id="size_{$key}_{$oriSize}" class="size_{$key}" size="{$oriSize}" data="{$item.size.$oriSize}" style="display:none">{$newSize}</span>
+					{/foreach}
+				{/foreach}
+				<input type="hidden" id="table_type" value="{$sizeConversion.tableType}" />
+			{/if} 
+		<!--国际尺寸转换数据end-->
+       </div>
+		<input type="hidden" id="isCheckStock" value="" />
+		<input type="hidden" name="sku" id="sku" value="{$productInfo.sku}" />
+       <div class="goods_item_attr qty">
+           <span class="title">{$LC_WAP_PRODUCT_QUANITY}:</span>
+           <div class="quantity_box">    
+               <span class="prev gray">-</span>
+              <input id="qty" class="qty_val" type="text" maxlength="5" autocomplete="off"  name="qty" oldqty="1"  id="qty" maximum="{$productInfo.maximum}" clearStock="{$productInfo.clearStock}" value="1">
+               <span class="next">+</span>
+           </div>
+       </div>
+       <p class="MaximumStock"></p>
+   </div>

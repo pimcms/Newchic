@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+        <div class="main_box">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>Purchased</h2>
+            <span class="righttextbtn">Done</span>
+		</div>
+		
+		<div class="wrap">
+			<div class="purchased_item">
+             <form id="myform" action="/index.php?com=review&t=image_upload" method="post">
+            	<ul class="purchase_list">
+                    {include file='libs/share/purchaselist.html'}
+                </ul>
+                <input type="hidden" id="total" name="total" value="{$total}"/>
+                <input type="hidden" id="p_id" name="products_id" value=""/>
+                <input type="hidden" id="flg" name="flg" value=""/>
+            </form>
+            </div>
+		</div>
+    </div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="{$View->getValue('root_path')}/js/common.js"></script>
+
+{literal}
+<script type="text/javascript">
+// active_click('.purchased_box li','active');
+//初始化购买列表
+function initPurchaseList(page){
+    // $("#total").remove();
+    $(".nodata").remove();
+    $.ajax({
+        url: '/index.php',
+        type: 'get',
+        dataType:'JSON',
+        data: 'com=review&t=getPurchaseHistory&isAjax=1&page='+page,
+        success:function(res){
+            if(res==''){
+                return false;
+            }
+            $('.purchase_list').find(".loading").remove();
+            $(".purchase_list").append(res.listStr);
+            $(".nodata").remove();
+            //$("#total").val(res.total); 
+        },
+    });
+    return false;
+}
+
+//滑动加载
+if($(".purchase_list li").length>0)
+{       
+    $(".main").scroll(function(){
+        if($(".purchase_list .loading").length>0)
+        {
+            return false;                       
+        }
+        var _total=$("#total").val();     
+        var srollHeight = $(this).scrollTop();   
+        var docHeight = $(".main_box").height();  
+        if(rec_page>_total){return ;}
+        if (docHeight - srollHeight - $(this).height()<20 && !no_index_data)
+        {               
+            $(".purchase_list").append('<div class="loading">'+loading_html+'</div>');   
+            $(".main").animate({ scrollTop:200000},10);
+
+            initPurchaseList(rec_page);
+            rec_page++;
+        }
+    });
+}
+
+$(document).on("click","#select",function(){
+    var _this=$(this);   
+    var hid=parseInt(_this.parent().find('#hid').val());
+    $("#p_id").val(hid);
+    $("#flg").val(1);
+})
+
+$(document).on("click",".righttextbtn",function(){
+    $("#myform").submit();
+})
+
+</script>
+{/literal}
+</body>
+</html>

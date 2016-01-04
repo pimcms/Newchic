@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="main_box">
+			<div class="index_header_top header_top">
+				<span class="prev">
+					<i class="arrow_c"><i><i></i></i></i>
+				</span>
+				<h2>{$LA_MY_ORDERS}</h2>
+			</div>
+			<div class="wrap">
+	            <div class="account_item">
+	            	{if $ordersList}
+	                <div class="account_orders">
+	                	<div class="orders_nav"><span id="title">{$LA_MY_ORDERS} ({$total})</span>
+	                		{if count($ordersCount) > 1}
+	                    	<span class="arrow_a"><i><i></i></i></span>	
+	                        <ul id="orderurl" data-src="index.php?com=account&t=orderlist&isAjax=1&orderStatus=0">
+	                        	{foreach from = $ordersCount item = item}
+	                            <li data-src="index.php?com=account&t=orderlist&isAjax=1&orderStatus={$item.status_id}">{$item.status_name} ({$item.count})</li>
+	                            {/foreach}
+	                        </ul>
+	                        {/if}
+	                    </div>
+	              	</div>
+					<div class="account_orders" id="orderList">
+	                {include file="libs/account/orderlist.html"}
+	                </div>
+					{else}
+					<div class="account_orders">
+						<span class="nodata"><b class="icon"><i></i></b>{$LA_ORDER_NO_CURRENT_OREDERS}</span>
+						<span class="shop_now"><a href="/">{$LA_ORDER_SHOP_NOW}</a></span>
+					</div>
+					{/if}
+	            </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{include file="libs/common/foot.html"}
+<script>
+var order_total = '{$totalPage}';
+</script>
+<script src="/{$View->getValue('root_path')}/js/order.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{if $laterList}
+<div class="bag_item laterbox">
+  <h4 class="title">{$LS_CART_SAVE_FOR_LATER}<span>( {$laterCartTotal} {$LS_ITEMS})<b><i class="opt arrow_b"><i></i></i></b></h4>
+  <span class="later_list" style="display:none;">
+  <div class="bg_cart_cotnainer"> 
+  {foreach from=$laterList item=item key=cart_id name=laterList}
+    <div class="bg_cart_item">
+      <dl class="nc_clearfix">
+        <dt><span class=""><a href="{$item.url}"><img src="{$item.image_url}"></a></span></dt>
+        <dd>
+          <div class="item_text">
+            <p><a href="{$item.url}">{$item.products_name}</a></p>
+            {if $item.attributes} 
+			<span class="item_size"> 
+			{foreach from=$item.attributes item=attr name=attributesFor} 
+				<small>{$attr.name}: <strong>{$attr.value}</strong></small> 
+			{/foreach} 
+			</span> 
+			{/if}
+            <div class="qty"> {$LS_QTY}:{$item.quantity}</div>
+          </div>
+          <p class="fl_bot"> 
+		  	<span class="pri">{$item.format_final_price}</span> 
+			<span class="slt addLaterToCart" cart_id="{$item.cart_id}"> ≡ {$LS_MOVE_TO_CART}</span>
+			<span class="bg_item_i bg_item_rm remove" cart_id="{$item.cart_id}"></span>
+		  </p>
+        </dd>
+      </dl>
+    </div>
+    {/foreach}
+	</div>
+  </span> 
+</div>
+{/if} 

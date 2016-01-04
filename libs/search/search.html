@@ -1,0 +1,12 @@
+<div class="search_item" style="display:none;">
+  <div class="search">
+    <form action="/index.php?com=search" method="post" class="search_form" onsubmit="return searchCheck();">
+      <input type="text" class="keyword inputchang" name="keywords" dvalue="Search" value="Search" style="color: rgb(204, 204, 204);" autocomplete="off">
+      <input type="submit" class="btn" value="search">
+      <i class="close">×</i>
+    </form>
+    <span onclick="modal_remove();" class="cancel">{$LC_CANCEL}</span> </div>
+  <div class="search_list">
+  {include file='libs/search/search_item.html'}
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="account_points">
+	<span class="total">{$LA_MY_POINTS}:<b>{$result.points}</b></span>
+	<span class="total_info">{$LA_MY_POINT_NOTE}</span>
+</div>
+{foreach from = $result.couponslist item = item}
+<div class="account_points">
+	<h4>{$item.title}</h4>
+	<ul class="account_points_list">
+		{foreach from = $item.coupons item = coupon}
+		<li>
+			<form method="post" id="pointsForm{$coupon.exchange_points}">
+			<span class="title">{$coupon.coupon_description}</span>
+			<span class="ponits">{$LA_POINTS}:{$coupon.exchange_points}</span>
+			<span  {if $coupon.can_exchange == 1}class="get" onClick="exchangeCoupon({$coupon.exchange_points})"{else}class="get gray"{/if}>{$LA_POINT_GET_COUPON}</span>
+			<input type="hidden" value="{$coupon.coupon_code}" name="couponcode">
+			</form>
+		</li>
+		{/foreach}
+		
+	</ul>
+</div>
+{/foreach}

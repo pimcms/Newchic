@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Expires" CONTENT="-1">           
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>Sign in Mobile</title>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link href="images/logo_small.jpg" rel="shortcut icon">
+<link href="images/logo_small.jpg" rel="Bookmark">
+	<style type="text/css">
+		.head_nav .login_nav{height:2.60rem;display:inline-block;margin: 0.7rem auto;}
+		.head_nav .login_nav .nav_segment{height:2.60rem;line-height:2.60rem; border:1px solid #ffffff;background:#ffffff;float:left;padding:0 2.33rem 0;}
+		.head_nav .login_nav .nav_segment.active{background: #F85184;}
+		.head_nav .login_nav_left{border-radius:0.42rem 0 0 0.42rem;}
+		.head_nav .login_nav_right{border-radius:0 0.42rem 0.42rem 0;}
+		.head_nav .nav_segment a{font-size:1.5rem;color:#f85184; font-family:Arial;}
+		.head_nav .login_nav .nav_segment.active a{color: #FFFFFF;}
+		
+		.login_sign{padding:2rem;text-align:center;}
+		.newchic_logo{padding:0.25rem 0 3.25rem;}
+		.newchic_logo a{width:15.25rem;height:5.67rem;display:block;margin:0 auto;}
+		.newchic_logo img{width:100%;}
+		.signbox ul li{margin-bottom:1.25rem;text-align: left;}
+		.signbox .inputbox{position:relative;}
+		.inputbox .tips{position:absolute;left:1rem;top:50%;margin-top:-0.6rem;color:#bebebe;font-size:1.6rem;}
+		.inputbox input{width:100%;height:3.5rem;padding-left:1rem;border:1px solid #dddddd;border-radius:3px;font-size:1.6rem;}
+		.signbox .btn{background:#f85184;}
+		.btn{width:100%;padding:1rem;border-radius:3px;font-size:1.6rem;font-family:Arial;color:#ffffff;font-weight:bold;}
+		.signbox p{line-height:2; margin:1rem 0;}
+		.signbox p a{color:#939393; padding:0 1rem 0;float:right;font-size:1.4rem; text-decoration:underline;}
+		.login_btn{padding:0 2rem;}
+		.login_btn .facebook{display: block;line-height: 3.5rem;height: 3.5rem;background:#3b5999;text-align: center; margin:2rem auto; color: #ffffff;font-size: 1.6rem;border-radius:3px;}
+		.facebook span{position: relative;padding-left: 3rem;height: 3.5rem; line-height:3.5rem; display: inline-block;}
+		.facebook i{display:inline-block;width:3rem;height:3rem; background:url(../images/common_icon.png) no-repeat 0 -21rem; background-size:3.0rem; position:absolute;left:0; top:3px;}
+	</style>
+</head>
+
+<body>
+	<!--head-->
+	<div class="head_nav header_top_fixed ">
+      <a href="javascript:void(0):;" class="icon_head_back"></a>
+      <div class="login_nav">
+      	<div class="nav_segment login_nav_left">
+        	<a href="nav_segment javascript:void(0):;">Sign In</a>
+        </div>
+        <div class="nav_segment active login_nav_right">
+        	<a href="javascript:void(0):; ">Register</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    	<div class="main">
+         <div class="wrap">
+            
+         	 <div class="login_sign" style="display:block">
+ 			  <!--newchic_logo-->
+              <div class="newchic_logo">
+              	<a href="javascript:void(0):;">
+                	<img src="images/login_logo.png"> 
+                </a>
+               </div>
+              <!--sign In-->
+			  <form>
+              <div class="signbox">
+              	<ul>
+                  <li>
+                   <div class="inputbox">                  	
+	         		    <input type="text" class="input inputcolor" rule="email" placeholder="E-mail" dvalue="Email"  name="email"/>	
+                   </div>
+                  </li>
+                  
+                  <li>
+                   <div class="inputbox">                  	
+	         		    <input type="password" class="input inputcolor" rule="email" placeholder="Password"  dvalue="Email"  name="email"/>	
+                   </div>		
+                  </li>
+                  <li>
+                  	<input type="checkbox" name="log_rem" id="log_rem" value=""/><label for="log_rem">Remember Me</label>
+                  </li>
+                </ul>                	
+                	<br/>
+             		<input type="submit" class="btn" value="Sign In"/>
+                    <p>
+                    	<a href="#">Forget password?</a>
+                    </p>
+               </div>
+             </form>
+             
+            </div>
+              <!--facebook-->
+              <div class="login_btn">
+            	<a href="javascript:void(0):;" class="facebook">
+                 <span>
+                 	<i></i>
+                    Sign In with Facebook
+                 </span>
+               </a>
+         	 </div>
+            
+         </div>
+       </div>
+     </div>
+</body>
+</html>

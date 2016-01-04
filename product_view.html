@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+<meta property="og:image"  content="{$shareImage}" />
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="wrap">
+        	<div class="goods_detail">
+        	   <div class="head_nav header_top_fixed">
+				<span class="prev"><a href="javascript:;" onClick="$.newchic_item.historyGo();"><i class="arrow_c"><i><i></i></i></i></a></span>
+				<h4 class="head_nav_title">{$LP_PRODUCT_DETAILS}</h4>
+			   </div>
+                {include file="libs/product/product_image.html"}
+                  <div class="inhere">
+                	   <ul>
+			          {foreach from=$locationPath item=item name=locationPath}
+			          {if !$smarty.foreach.locationPath.last}
+			         <li><a href="{$item.link}">{$item.title}</a></li>
+			           <li>&raquo;</li>
+			             {else}
+			          <li><h1><a href="{$item.link}">{$item.title}</a></h1></li>
+			           {/if}
+			          {/foreach}
+			</ul>
+                </div>
+                <div class="wrap goods_top">
+                    <input id='products_id' type="hidden" value='{$productInfo.products_id}'/>
+                    <span class="title">{$productInfo.products_name}</span>
+                    <input id='products_url' type="hidden" value='{$productInfo.url}'/>
+                    <input id='share_image' type="hidden" value='{$shareImage}'/>
+                     <input id='sku' type="hidden" value='{$productInfo.sku}'/>
+                    <input id='products_name' type="hidden" value='{$productInfo.products_name}'/>
+                    <span class="price">{$productInfo.format_final_price}</span>
+                    <span class="old_price" style="display:none">{$productInfo.format_final_price}</span>
+                    <!-- <span class="sold">{$LP_NOTE_SOLD}: {$productInfo.soldTotal}</span> -->
+                </div>
+                
+                <div class="goods_item goods_top_tool">
+                    <ul>
+                        <li><b class="save {if $productInfo.wishlist}active{/if}" pid="{$productInfo.products_id}"><i></i></b><span>{$LC_SAVE}</span></li>
+                        <li><b class="share"><i></i></b><span>{$LC_WAP_PRODUCT_SHARE}</span></li>
+                        <li><b class="show"><i></i></b><span>{$LC_WAP_PRODUCT_BUYER_SHOR}</span></li>
+                    </ul>
+                </div>
+
+                <div class="goods_poas goods_wrap">
+                	<div class="module_detail_item">					   
+					    {include file="libs/product/product_attr.html"}
+					</div>
+					<div class="goods_poas_bottom addbag_box clearfix" id="addbag_box">
+						<div class="box">
+							<button class="buy_btn">{$LP_BUY_IT_NOW}</button>
+							<button class="addbag_btn">{$LP_ADD_TO_BAG}</button>
+					        <!--<span class="addbag">Add To Bag</span>-->
+					        <a href='{$httpsHomeUrl}shopping_cart.php'><span class="bag_info"><i class="bag"></i><b class="num">{if $cartNum}{$cartNum} {else}0{/if}</b></span></a>
+					    </div>
+					</div>						
+					
+					<div class="fixed_dialogs add_flase" id="fixed_dialogs">
+						<b>{$LC_WAP_PLEASE_CHOOSE_SIZE}</b>
+					</div>
+					
+					<div class="fixed_dialogs add_sucess" id="fixed_dialogs">
+						<b>{$LC_WAP_SUCCESS}</b>
+					</div>
+					
+                </div>
+                
+                 <div class="goods_item ask_question">
+                 	<a href="{$productInfo.questions_url}">
+                    <span class="ask">{$LP_ASK_A_QUESTION}</span>
+                    <span class="arrow_d account_setting"><i><i></i></i></span>
+                    </a>
+                 </div>
+                 <div class="goods_item description">
+                 	<h4 class="title">{$LP_ERROR_TYPE_DESC}</h4>
+                    <div class="description_info">
+                        <p>{$productInfo.description}<br />
+                      
+                    </div>
+                    <span class="detail_info_more"><a href="{$homeUrl}index.php?com=product&t=getDesc&products_id={$productInfo.products_id}">{$LP_READ_MORE} &gt;</a></span>
+                 </div>
+                 {include file="libs/product/product_review.html"}
+                 <div class="goods_item buytogether">
+                 	<h4 class="title">{$LP_RECOMMEND}</h4>
+                    <div class="goodlist">
+                        <div class="itembox">
+                            <ul>
+                                {foreach from=$productList item=item name=likeproduct}
+									{if $smarty.foreach.likeproduct.index%2 eq 0}
+                                	{include file="libs/index/item_li.html"}
+                                	{/if}
+                                {/foreach}
+                            </ul>
+                            <ul>
+                                {foreach from=$productList item=item name=likeproduct}
+									{if $smarty.foreach.likeproduct.index%2 eq 1}
+                                	{include file="libs/index/item_li.html"}
+                                	{/if}
+                                {/foreach}
+                            </ul>
+                        </div>
+					</div>
+                 </div>
+             </div>
+		</div>
+		<nav class="fixed_backtotop detail_backtotop">
+			<ul>
+				<li>
+					<i class="totop_button"></i>
+				</li>
+				<li>
+					<a href="/index.php?com=shopcart">
+						<i class="shopcart"><span class="num">{if $cartNum}{$cartNum} {else}0{/if}</span></i>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	{include file="libs/product/product_image_show.html"}
+</div>
+
+
+
+{include file="libs/common/foot.html"}
+
+{literal}
+<script>
+img_lazyload();
+</script>
+{/literal}
+<script src="/{$View->getValue('root_path')}/js/review.js"></script>
+<script src="/{$View->getValue('root_path')}/js/product.js"></script>
+<script src="/{$View->getValue('root_path')}/js/share.js"></script>
+<script src="/{$View->getValue('root_path')}/js/jquery.cookie.js"></script>
+<script>
+var pro_img = '{$productInfo.image_list.view.0}';
+var pro_name = '{$productInfo.products_name}';
+var pro_price = '{$productInfo.format_final_price}';
+</script>
+
+</body>
+</html>

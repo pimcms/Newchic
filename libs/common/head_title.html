@@ -1,0 +1,28 @@
+<div class="head_nav header_top_fixed {if $shop_cart}head_cart{/if}">
+	<a href="javascript:void(0);" class="icon_head_back"></a>
+	{if !$notShowPerson}
+	<a href="{$homeUrl}account.html" class="icon_head_person"></a>
+	{/if}
+	{if $headSubmit && $headSubmit != 'wish'}
+	<span class="righttextbtn">{$headSubmit}</span>
+	{else}
+	<div class="wish_icon">
+		<a href="javascript:;"><b></b></a>
+	</div>
+	{/if}
+	{if !$shop_cart && !$headSubmit}
+	<span class="i_cart">
+	<a href="{$httpsHomeUrl}shopping_cart.php">
+		<i>
+			<small class="num">0</small>
+		</i>
+	</a>
+	</span>
+	{/if}
+	
+	{if $pageTitle && $shop_cart == 1}
+	<h4 class="head_nav_title th_font">{$pageTitle}</h4>
+	{else}
+	<h1><a href="{$homeUrl}" class="logo">{$LC_NEWCHIC}</a></h1>
+	{/if}
+</div>

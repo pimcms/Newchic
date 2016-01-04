@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+
+<div class="head_nav header_top_fixed">							
+	<div class="menu_bar">
+       <a href="javascript:;">
+            <span></span>
+            <span></span>
+            <span></span>
+       </a>
+    </div>
+    <div class="wish_icon">
+        <a href="javascript:;"><b></b></a>
+    </div>
+    <h1><a href="/index.html" class="logo">{$LC_NEWCHIC}</a></h1>
+    <a class="detail_serach" href="javascript:;"><span class="i_search "></span></a>
+</div>
+{include file="libs/common/menu.html"}
+
+<div class="container index_container">
+	{include file="libs/common/menu.html"}
+	<div class="main">
+    	<div class="main_box">
+            {include file="libs/index/banners.html"}
+            {include file="libs/index/nav.html"}
+            <div class="wrap">
+                <div class="index_banner">
+                    <span class="banner_box">
+                        <a href="freeshipping.html"><img src="/{$View->getValue('root_path')}/ad/04.jpg" /></a>
+                        <a href="/index.php?com=clearance"><img src="/{$View->getValue('root_path')}/ad/05.jpg" /></a>
+                    </span>
+                </div>
+            </div>
+            <div class="wrap">
+                <div class="goodlist index_goodlist_item">
+                    <h4 class="sub_title">{$LI_RECOMMEND}</h4>
+                    <div class="itembox">
+                    {include file="libs/index/item.html"}
+                    </div>
+                </div>
+            </div>
+         </div>
+	</div>
+	<div class="wish">
+	</div>
+</div>
+ 
+{include file="libs/common/bottom_menu.html"}
+
+{include file="libs/common/foot.html"}
+{literal}
+<script>
+$(document)
+.ready(function(){
+	$.newchic_item.validateLogin();
+	$.newchic_item.loadHeadCart();
+	$.newchic_item.loadHistory();
+	$.newchic_item.reset_img_size();
+});
+$(function(){$.newchic_wish.group_wish();});
+img_lazyload();
+</script>
+{/literal}
+</body>
+</html>

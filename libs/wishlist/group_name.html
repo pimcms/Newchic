@@ -1,0 +1,11 @@
+<div class="createwishbox">
+	<div class="createitem">
+		<h2>{if $groupInfo.group_id}{$LC_RENAME_GROUP}{else}{$LC_CREATE_GROUP}{/if}</h2>
+		<input type="hidden" name="group_id" id="group_id" value="{$groupInfo.group_id|default:0}">
+		<input type="text" name="group_name" class="keyword" msg="{$LC_SAME_NAME}" oldName="" value="{$groupInfo.group_name}">
+	</div>
+	<div class="btn">
+		<span class="wishlistCreate {if $groupInfo.group_id}rename{/if}"><i>{if $groupInfo.group_id}{$LC_OK}{else}{$LC_CREATE}{/if}</i></span>
+		<span onclick="popup_remove();"><i>{$LC_CANCEL}</i></span>
+	</div>
+</div>

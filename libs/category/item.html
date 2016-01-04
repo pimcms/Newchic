@@ -1,0 +1,17 @@
+{if $productList}
+<ul id="firstUl">
+	{foreach from = $productList item = item name = products}
+	{if $smarty.foreach.products.index % 2 == 0}
+		{include file='libs/index/item_li.html'}
+	{/if}
+	{/foreach}
+</ul>
+<ul id="secondUl">
+	{foreach from = $productList item = item name = products}
+	{if $smarty.foreach.products.index % 2 == 1}
+		{include file='libs/index/item_li.html'}
+	{/if}
+	{/foreach}
+</ul>
+{/if}
+

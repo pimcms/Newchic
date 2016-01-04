@@ -1,0 +1,30 @@
+{if $doubtList}
+{foreach from = $doubtList item = item key = key}
+<div class="dou_box">
+	<div class="dou_body">
+		<h3>{$item.questions_descriptions}</h3>
+		<i class="dou_time">{$item.add_time}</i>
+		<p class="dou_des">{$item.questions_content}</p>
+		{if $item.attachment1 || $item.attachment2 || $item.attachment3}
+		<div class="imgs">
+            {if $item.attachment1}<img src="{$item.att1}" width="80" height="94"/>{/if}
+            {if $item.attachment2}<img src="{$item.att2}" width="80" height="94"/>{/if}
+            {if $item.attachment3}<img src="{$item.att3}" width="80" height="94"/>{/if}		
+		</div>
+		{/if}
+		<p class="dou_des">
+			{if $item.reply_content}
+			<span class="dou_reply">Reply:</span>
+                {$item.reply_content}
+            {else}
+            <span class="dou_reply">{$LA_REPLY_TIP}</span>
+            {/if}
+		</p>
+	</div>							
+</div>	
+{/foreach}
+{else}
+<span class="nodata"><b class="icon"><i></i></b>{$LA_NO_DOUBTS}</span>
+{/if}
+
+ 

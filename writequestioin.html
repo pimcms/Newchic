@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LA_QUESTION_TITLE}</h2>
+            <span class="righttextbtn graycolor" id="submitWritequestion">{$LA_QUESTION_SUBMIT}</span>
+		</div>
+		
+		<div class="wrap">
+			<div class="write_reviews_item">
+            	<form>
+                    <div class="question_topic">
+                    	<span class="title">{$LA_QUESTION_PRODUCT_INFORMATION}</span>
+                        <span class="arrow_a"><i><i></i></i></span>
+                        <ul>
+                            <li>{$LA_QUESTION_PRODUCT_INFORMATION}</li>
+                            <li>{$LA_QUESTION_STOCK_STATUS}</li>
+                            <li>{$LA_QUESTION_DROPSHIP}</li>
+                            <li>{$LA_QUESTION_PAYMENT}</li>
+                            <li>{$LA_QUESTION_AOUT_SHIPPING}</li>
+                            <li>{$LA_QUESTION_OTHER}</li>
+                        </ul>
+					</div>
+					<input type="hidden" id="topic" name="topic" id="topic" value="{$LA_QUESTION_PRODUCT_INFORMATION}"/>
+					<input type="hidden" id="name" name="name" value="{$shiled_name}"/>
+					<input type="hidden" id="products_id" name="products_id" value="{$products_id}"/>
+                    <textarea id="question" name="question" err_tip="{$LA_QUESTION_LENGTH}"></textarea>
+                    <i class="note_tips">{$LA_QUESTION_CONTENT}</i>
+                  </form>
+            </div>
+		</div>
+        
+	</div>
+</div>
+{include file="libs/common/foot.html"}
+<script src="/{$View->getValue('root_path')}/js/question.js"></script>
+</body>
+</html>

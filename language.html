@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="menu"></div>
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LC_LANGUAGE}</h2>
+		</div>
+        
+		
+		<div class="wrap">
+            <div class="language_item">
+            	<ul>
+					{foreach from=$langNavs item=item}
+                	<li sel="{$item.value}" {if $item.value eq $currentLang}class="active"{/if}>
+					<b>{$item.name}</b>({$item.en_name}){if $item.value eq $currentLang}<i></i>{/if}
+					</li>
+                    {/foreach}
+                </ul>
+            </div>
+		</div>
+	</div>
+	<div class="wish"></div>
+</div>
+
+{include file="libs/common/foot.html"}
+<script language="javascript">
+var referer = "{$referer}";
+var currency = "{$selCurrency}";
+{literal}
+$('.language_item ul li').click(function(){
+	var selected_currency = $(this).attr('sel');
+	if(currency!=selected_currency){
+		$.ajax({
+			url:'/index.php?com=ajax&t=language',
+			data:{'toLang':selected_currency},
+			type:'GET',
+			success:function(){
+				if(typeof referer != 'undefined' && referer != null && referer != "" ){
+					window.location.href=referer;
+				}else{
+					window.history.back();
+				}
+			}
+		})
+	}
+});
+{/literal}
+</script>
+</body>
+</html>

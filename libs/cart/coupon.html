@@ -1,0 +1,25 @@
+<div class="bag_coupon_item">
+  <h4 class="title">{$LS_MY_POINTS}:<b>{$userpoints|default:0}</b></h4>
+  <ul class="coupon_item_list coupon_code">
+    <li>
+      <input type="text" class="inputchang" points="{$userpoints|default:0}" dvalue="{$View->sprintf('LS_CART_USE_POINTS', $use_points_max)}" value="{$View->sprintf('LS_CART_USE_POINTS', $use_points_max)}" >
+      <span class="use ok use_points">{$LS_USECOUPON}</span>
+	</li>
+  </ul>
+
+  <h4 class="title">{$LS_APPLY_COUPON}</h4>
+  <ul class="coupon_item_list coupon_code">
+    <li>
+      <input type="text" class="inputchang" dvalue="{$LS_ENTER_COUPON}" value="{$LS_ENTER_COUPON}" style="color: rgb(204, 204, 204);">
+      <span class="use ok use_coupon">{$LS_APPLY}</span></li>
+  </ul>
+  {if $cartCoupons}
+  <h4 class="title">{$LS_SELECT_A_COUPON}</h4>
+  <ul class="coupon_item_list coupon_select">
+    {foreach from=$cartCoupons item=item}
+    <li><span class="title">{$item.coupon_name}</span><span class="info">{$item.coupon_description}</span><span class="code" coupon="{$item.change_coupon_code}">{$LS_CODE}: {$item.change_coupon_code}</span><span class="date">{$LS_EXPIRES_ON}: {$item.coupon_expire_date}</span><span class="use">{$LS_USECOUPON}</span></li>
+    {/foreach}
+  </ul>
+  {/if}
+  <span class="coupon_cancel" onclick="popup_remove();"><input type="button" class="popup_btn_cancel" value="{$LC_CANCEL}"></span>
+</div>

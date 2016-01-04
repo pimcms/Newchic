@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+<script>
+var JS_LOADING = '{$LS_LOADING}';
+var JS_SEL = '{$LS_NO_SELECT_SHIP_ADDRESS_MSG}';
+var JS_ENTER_PHONE = '{$LS_ENTER_PHONE}';
+var JS_REPRO = '{$LS_REMOVE_PRODUCT}';
+</script>
+</head>
+<body>
+{assign var = 'pageTitle' value = $LS_WAP_SHOPPING_BAG}
+{assign var = 'useSearch' value = 1}
+{include file = 'libs/common/head_title.html'}
+<div class="container">
+  <div class="main">
+		
+    <div class="wrap wrap_fixed_box">
+      {if $emptyCart}
+		{include file="libs/cart/empty.html"}
+		{else}
+			 
+             <div class="bag_item">
+	       	    {assign var='carNum' value=$blockList|@count}
+			 	{foreach from=$blockList item=block name=list}
+				{assign var='packNum' value=$smarty.foreach.list.iteration}
+             	<div class="warehouse_list" id="list_1">
+					{if $carNum gt 1}
+					<h4 class="title">{$View->sprintf('LS_PACKAGE_TITLE', $packNum, $block.itemTotal)}</h4>
+					{/if}
+					{foreach from=$block.areaList item=area}
+						{include file="libs/cart/item.html"}
+					{/foreach}
+                </div>
+				{/foreach}
+			{include file="libs/cart/paypal/total.html"}
+			{include file="libs/cart/later_cart.html"}
+	  {/if}
+      {include file="libs/common/bottom.html"}
+    </div>
+  </div>
+  <div class="wish"></div>
+</div>
+{include file="libs/common/foot.html"}
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/cart.js"></script>
+</body>
+</html>

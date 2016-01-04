@@ -1,0 +1,38 @@
+<div class="shop_discount_box">
+	<div class="shop_discount">
+		<div class="shop_discount_title">
+			<h4 class="">{$LS_SELSECTED_DISCOUNT}:<span class="result_title"></span> <span class="th_color"></span></h4>
+		</div>
+		<div class="shop_discount_body clearfix">
+			<div class="shop_discount_item {if !$addCouponList && !$discountInfo}shop_discount_item_selected{/if}" data-id="0">
+				<p>{$LS_CASH_REDUCTION}: <span id="reduction_msg">{$reduction_message.msg}</span></p>
+				<span class="select_icon"></span>
+			</div>									
+			<div class="shop_discount_item input_focus clearfix {if $discountInfo}shop_discount_item_selected{/if}" data-id="2">
+				<strong>{$LS_POINTS_CHANGE_PRICE}</strong>
+				<label>{$LS_POINTS}: </label>
+				<div class="shop_discount_item_input">
+					<input type="text" placeholder="Input Points" id="used_point"/> <a href="javascript:void(0);" id="usePoint">{$LS_USE}</a>
+				</div>
+				<small>{$LS_AVAILABLE_POINTS}:<span id="max_points">{$use_points_max|default:0}</span></small>
+				<span class="select_icon"></span>
+			</div>
+			<div class="shop_discount_item clearfix {if $addCouponList}shop_discount_item_selected{/if}" data-id="1">
+				<div class="shop_discount_item_top clearfix">
+					<label>{$LS_COUPON}: </label>
+					<div class="shop_discount_item_input">
+						<input type="text" placeholder="Coupon Code" id="used_coupon"/> <a href="javascript:void(0);" id="useCoupon">{$LS_APPLY}</a>
+					</div>	
+				</div>
+				{if $couponNumber > 0}
+				<div class="shop_discount_item_bot">
+					<p>{$LS_SELECT_COUPON}</p>											
+					<i class="arrow_a"><i><i></i></i></i>
+				</div>
+				{/if}
+				<span class="select_icon"></span>			
+			</div>
+			
+		</div>								
+	</div>
+</div>

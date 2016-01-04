@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>	
+{include file="libs/common/meta.html"}
+</head>
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LA_CONTACT_US}</h2>
+            <span class="righttextbtn graycolor" onClick="submitContactus(this);">{$LA_CONTACT_US_SUBMIT}</span>
+		</div>
+		
+		<div class="wrap">
+			<div class="write_reviews_item">
+            	<form id="contactform">
+                    <div class="question_topic">
+                    	<span class="title">Pre-Sale - {$pre_sale[0].questions_descriptions}</span>
+                        <span class="arrow_a"><i><i></i></i></span>
+                        <input name="topic" id="topic" type="hidden" value="{$pre_sale[0].category_id}" />
+                        <ul>
+                        	{foreach from=$pre_sale item=row}
+                            <li value="{$row.category_id}">Pre-Sale - {$row.questions_descriptions}</li>
+                            {/foreach}
+                            
+                            {foreach from=$after_sale item=row}
+                            <li value="{$row.category_id}">After-Sale - {$row.questions_descriptions}</li>
+                            {/foreach}
+                        </ul>
+					</div>
+					<div class="input_rea">
+	                    <textarea name="questions_content" id="questions_content" err_tip="{$LA_CONTACT_US_TIP6}"></textarea>
+	                    <i class="note_tips">{$LA_CONTACT_YOUR_MESSAGE}</i>
+	                    <input type="text" {if $customers_nickname} value="{$customers_nickname}" {else} value="{$LA_CONTACT_NAME}" {/if} dvalue="{$LA_CONTACT_NAME}" name="username" id="name" class="inputchang" msg="{$LA_CONTACT_US_TIP1}" />
+	                    <input type="text" {if $customers_email_address} value="{$customers_email_address}" {else} value="{$LA_CONTACT_YOUR_EMAIL}" {/if}  dvalue="{$LA_CONTACT_YOUR_EMAIL}" name="email" id="email" class="inputchang" err_tip="{$LA_CONTACT_US_TIP2}" msg="{$LA_EMAIL_EXIST}" />
+	                    <input type="text" {if $customers_telephone} value="{$customers_telephone}" {else} value="{$LA_CONTACT_PHONE}" {/if} dvalue="{$LA_CONTACT_PHONE}" name="phone" id="phone" class="inputchang"msg="{$LA_CONTACT_US_TIP3}" />
+		                <input type="text" value="{$LA_CONTACT_ORDER}" dvalue="{$LA_CONTACT_ORDER}" name="order_number" id="order_number" class="inputchang" msg="{$LA_CONTACT_US_TIP4}" />	                    
+	                    <div class="btn_box">
+	                    	<div class="add_box">
+	                    		<button>+</button>		                    	
+		                    	<input type="file"  name="Filedata" id="Filedata" imsg="{$LC_ERROR_UPLOAD_FILE_TOO_BIG}" msg="{$LC_ERROR_UPLOAD_FILETYPE_NOT_ALLOWED}"/>
+	                    	</div>
+	                    </div>
+	                    <input type="hidden" id="flg" value="1"/>
+                    </div>
+                  </form>
+            </div>
+		</div>
+        
+	</div>
+</div>
+{include file="libs/common/foot.html"}
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/ajaxfileupload.js" ></script>
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/contact.js" ></script>
+</body>
+</html>

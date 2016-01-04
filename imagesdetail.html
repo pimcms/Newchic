@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="menu"></div>
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>Detail</h2>
+           	<span class="righttextbtn graycolor" onClick="submitAddimage();">Add</span>
+		</div>
+        	
+		<div class="wrap">
+            <div class="image_item">
+                <div class="image_show_item">
+                    <ul class="image_show_list">
+                        <li>
+                        	<span class="user"><img src="{$item.avatars_url}"></span>
+                            <span class="name">
+                                {$item.customers_nickname}
+                                <i>{$item.add_date|date_format:'%b %d,%Y'}</i>
+                            </span>
+                            <span class="title">{$item.image_title}</span>
+                            <span class="img"><img src="{$item.image_url}"></span>
+                            <span class="goods_info"><i><a href="{$item.products_url}">{$item.products_name}</a></i><s class="price">{$item.format_final_price}</s></span>
+                            <div class="likecomment">
+                                <span class="like" onClick="diggMedia(this,{$item.image_id});"><i></i>{$item.diggs}</span>
+                                <span class="comment"><a href="/index.php?com=review&t=showMoreComment&id={$item.image_id}"><i></i></a>{$item.comments_count}</span>
+                            </div>
+                            <div class="comment_item_list">
+                                <span class="arrow_b"><i></i></span>                  
+                                    <dl>
+                                        {foreach from = $item.comments item=icom name=Imagecomment}
+                                        <dd>
+                                            <b>{$icom.customers_nikename}:</b>{$icom.post_content|truncate:"100":" ..."}
+                                        </dd>
+                                        {/foreach}
+                                    </dl>           
+                                {if $item.comments_count > 2}
+                                <span class="more"><a href="/index.php?com=review&t=showMoreComment&id={$item.image_id}">More Reviews &gt;</a></span>
+                                {/if}
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+		</div>
+	</div>
+	<div class="wish"></div>
+</div>
+
+{include file="libs/common/foot.html"}
+<script src="{$View->getValue('root_path')}/js/share.js"></script>
+
+</body>
+</html>

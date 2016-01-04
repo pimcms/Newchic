@@ -1,0 +1,11 @@
+{foreach from = $productList item = pro_item}
+<li class="goods_orders">
+	<span class="img"><a href="{$pro_item.url}"><img src="{$pro_item.products_image}" alt="{$pro_item.products_name}"/></a></span>
+	<span class="title">{$pro_item.products_name}</span>
+	<span class="poa">
+		<i>{$pro_item.attribute_text}</i>
+	</span>
+	<span class="num">Qty: {$pro_item.products_quantity}</span>
+	<span class="price" oriprice="{$pro_item.price}">{$pro_item.format_final_price}</span>
+</li>
+{/foreach}

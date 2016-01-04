@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Expires" CONTENT="-1">           
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title> Contact Us</title>
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<!--<link href="http://mnewchic.banggood.com/templates/wap/images/logo_small.jpg" rel="Shortcut Icon">
+<link href="http://mnewchic.banggood.com/templates/wap/images/logo_small.jpg" rel="Bookmark">-->
+<script type="text/javascript" src="http://mnewchic.banggood.com/templates/wap/js/jquery-1.9.1.min.js"></script>
+
+<script>
+var homeUrl='http://mnewchic.banggood.com/';
+var JS_OK = 'OK';
+var JS_CANCEL = 'Cancel';
+var JS_SAVE = 'Save';
+var JS_YES = 'Yes';
+var JS_CONTINUE = ' Continue';
+</script></head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2> Contact Us</h2>
+            <span class="righttextbtn graycolor" onClick="submitContactus(this);"> Submit</span>
+		</div>
+		
+		<div class="wrap">
+			<div class="write_reviews_item">
+            	<form id="contactform">
+                    <div class="question_topic">
+                    	<span class="title">Pre-Sale - I have a problem placing an order</span>
+                        <span class="arrow_a"><i><i></i></i></span>
+                        <input name="topic" id="topic" type="hidden" value="3" />
+                        <ul>
+                            <li value="3">Pre-Sale - I have a problem placing an order</li>
+                            <li value="4">Pre-Sale - I have a product question</li>
+                            <li value="5">Pre-Sale - Unsubscribe from newsletters</li>
+                            <li value="6">Pre-Sale - I have a problem using a coupon code/gift card</li>
+                            <li value="7">Pre-Sale - Other presale inquiry</li>                            
+                            <li value="10">After-Sale - I have not received my order yet</li>
+                            <li value="11">After-Sale - I have been charged with a tariff</li>
+                            <li value="12">After-Sale - My order status</li>
+                            <li value="13">After-Sale - I need to change my shipping address</li>
+                            <li value="14">After-Sale - Order cancelation</li>
+                            <li value="15">After-Sale - Product arrived defective</li>
+                            <li value="16">After-Sale - Items are missing from my order</li>
+                            <li value="17">After-Sale - Item is different from the one I ordered</li>
+                            <li value="18">After-Sale - I am having trouble with product operation.</li>
+                            <li value="19">After-Sale - Other after-sale inquiry.</li>
+                        </ul>
+					</div>
+					<div class="input_rea">
+						<textarea name="questions_content" id="questions_content" err_tip=" Please enter Message"></textarea>
+	                    <i class="note_tips"> Your Message...</i>
+	                    <input type="text" value=" Your Name" dvalue=" Your Name" name="name" id="name" class="inputchang" err_tip=" Please enter your name" msg="Please register your email first." />
+	                    <input type="text" value=" Your Email Address" dvalue=" Your Email Address" name="email" id="email" class="inputchang" err_tip=" Please enter a valid email" msg="Please register your email first." />
+	                    <input type="text" value=" Your Phone" dvalue=" Your Phone" name="phone" id="phone" class="inputchang" err_tip=" Please enter your phone" msg="Please register your email first." />
+	                    <input type="text" value=" Order Number" dvalue=" Order Number" name="Order" id="Order" class="inputchang" err_tip=" Please enter the oeder number" msg="Please register your email first." />
+	                    
+	                    <div class="btn_box">
+	                    	<div class="con_img">
+	                    		<img src="images/photo.jpg" />
+	                    	</div>
+	                    	<div class="con_img">
+	                    		<img src="images/photo.jpg" />
+	                    	</div>
+	                    	<div class="con_img">
+	                    		<img src="images/photo.jpg" />
+	                    	</div>	                    	
+	                    	<div class="add_box">
+	                    		<button>+</button>		                    	
+		                    	<input type="file" multiple="multiple" name="Order" id="Order" />
+	                    	</div>	                    	
+	                    </div>
+	                    <input type="hidden" id="flg" value="1"/>
+					</div>                   
+                  </form>
+            </div>
+		</div>
+        
+	</div>
+</div>
+<script src="http://mnewchic.banggood.com/templates/wap/js/common.js"></script>
+<script src="http://mnewchic.banggood.com/templates/wap/js/jq.modal.layer.js"></script>
+<script src="http://mnewchic.banggood.com/templates/wap/js/wishlist.js"></script>
+<script type="text/javascript">
+	$(document).on("click",".question_topic .title",function(){
+		var height = $(this).siblings("ul").outerHeight(); 
+		var textareaHeight = $(this).parent().siblings("textarea").outerHeight(); 
+		var emailHeight = $(this).parent().siblings(".inputchang").outerHeight(); 
+		var rea_height=$(this).parent().siblings(".input_rea").outerHeight(); 
+		$(this).siblings("ul").show();		
+		$(this).parent().css("height",height-rea_height);
+	});
+	$(document).on("click",".question_topic li",function(){
+		var text = $(this).text();
+		$(this).parent().siblings(".title").text(text);
+		$(this).parent().hide();
+		$(this).parents(".question_topic").removeAttr("style");
+		$("#topic").val($(this).val());
+	});
+
+	function chkEmail(email){
+		var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9_]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		if(!myreg.test(email))
+		{
+			msgbox($('#email').attr("err_tip"));
+			$('#email').focus();
+			return;
+		}else{
+			$.ajax({
+					url:'/index.php',
+					type: 'post',
+					dataType: 'json',
+					data: 'com=account&t=exist&email='+email,
+					success: function(rs){
+						if(!rs.status){
+							msgbox(rs.msg);
+							$("#flg").val(0);
+							return;
+						}
+						else{
+							$("#flg").val(1);
+						}
+					}
+
+			});
+		}
+
+	}
+	
+	function submitContactus(obj){
+		//锁定按钮防止多次点击
+		if($(obj).hasClass("unsubmit"))
+		{
+			return	false;
+		}
+		
+	 	var email = $('#email').val();
+		var questions_content = $('#questions_content').val();
+		var _flg=$("#flg");
+		_flg.val(1);
+
+		//内容检查
+		if(questions_content == ''){
+			msgbox($('#questions_content').attr("err_tip"));
+			$('#questions_content').focus();
+			return;
+		}
+
+		var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9_]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		if(!email || (email==$('#email').attr("dvalue")) ||!myreg.test(email)){
+			msgbox($('#email').attr("err_tip"));
+			$('#email').focus();
+			return;
+		}else{
+			$.ajax({
+					url:'/index.php',
+					type: 'post',
+					dataType: 'json',
+					data: 'com=account&t=exist&email='+email,
+					success: function(rs){
+						if(!rs.status){
+							msgbox(rs.msg);
+							_flg.val(0); 
+							//return;
+						}
+
+						if(_flg.val()==0){
+							return ;
+						}else{
+							$.ajax({
+								type:'POST',
+								dataType:'JSON',
+								url:'/index.php?com=article&t=submit',
+								data:$("#contactform").serialize(),
+								success:function(res){
+									if(res.status == 1){
+										$(obj).addClass("unsubmit");
+										msgbox(res.msg);
+									}else{
+										msgbox(res.error);
+									}
+									
+									
+								}
+							});
+						}
+					}
+			});
+
+		}	
+			
+	}
+</script>
+
+</body>
+</html>

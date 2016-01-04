@@ -1,0 +1,22 @@
+{if $addressList}
+	{foreach from = $addressList item = item key = key}
+	<div class="account_address_list">
+		<h4>{$LA_ADDRESS_ADDRESS} {$key+1}</h4>
+		<ul>
+			<li><i>{$LA_DS_FULL_NAME}:</i>{$item.entry_lastname}-{$item.entry_firstname}</li>
+			<li><i>{$LA_ADDRESS_REGION}:</i>{$item.entry_city}, {$item.entry_state},{$item.countries_name}</li>
+			<li><i>{$LA_ADDRESS_POSTAL_CODE}:</i>{$item.entry_postcode}</li>
+			<li><i>{$LA_ADDRESS_ADDRESS}:</i>{$item.entry_street_address}</li>
+		</ul>
+		<div class="setdefault">
+			<span onclick="setDefault(this,{$item.address_book_id});" {if $item.default eq 1}class="default active"{else}class="default"{/if}><i></i>{$LA_ADDRESS_DEFAULT}</span>
+			<span class="set_tool">
+				<i class="remove" onClick="deleteAddress(this,{$item.address_book_id})"></i>
+				<a href="index.php?com=account&t=addressHandelTpl&address_id={$item.address_book_id}"><i class="eidt"></i></a>
+			</span>
+		</div>
+	</div>
+	{/foreach}
+{else}
+	<span class="nodata">{$LC_NO_DATA}</span>
+{/if}

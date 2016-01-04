@@ -1,0 +1,65 @@
+
+	{if $messageList.type == 1}
+		{if count($messageList.list)>0}
+		{foreach from = $messageList.list item = item}
+		<li>
+			<span class="img"><img src="{$item.customers_avatars}"></span>
+			<span class="title"><b>{$item.customers_name}</b>{$LA_WAP_LIKE_PIC}</span>
+			<span class="date">{$item.time_tips}</span>
+			<span class="image"><img src="{$item.source_message}" /></span>
+		</li>
+		{/foreach}
+		{else}
+		<div class="account_messages">
+			<span class="nodata"><b class="icon"><i></i></b>{$LA_MESSAGE_NO_MESSAGES}</span>
+		</div>
+		{/if}
+	{/if}
+	
+	{if $messageList.type == 2}
+		{if count($messageList.list)>0}
+		{foreach from = $messageList.list item = item}
+		<li>
+			<span class="img"><img src="{$item.customers_avatars}" /></span>
+			<span class="name"><i>{$item.customers_name}</i>{$item.time_tips}</span>
+			<span class="info">{$item.message}</span>
+			<span class="myreview"><i class="arrow_b"><i></i></i><b>{$LA_WAP_REVIEW_POST}:</b><img src="http://img.newchic.com/share/shots/thumb/{$item.source_message}"</span>
+		</li>
+		{/foreach}
+		{else}
+		<div class="account_messages">
+			<span class="nodata"><b class="icon"><i></i></b>{$LA_MESSAGE_NO_MESSAGES}</span>
+		</div>
+		{/if}
+	{/if}
+	
+	{if $messageList.type == 3}
+		{if count($messageList.list)>0}
+		{foreach from = $messageList.list item = item}
+		<li>
+			<span class="messages_queation_goods">
+				<u class="img"><a href="{$item.productsInfo.url}" alt="{$item.productsInfo.products_name}"><img src="{$item.productsInfo.image_url}"></a></u>
+				<u class="title">{$item.title}</u>
+				<u class="price">{$item.productsInfo.format_final_price}</u>
+				<i class="arrow_b"><i></i></i>
+			 </span>
+			 <span class="queation_box">
+				<strong>
+					<s>Q:</s>
+					{$item.content} 
+					<b class="date">{$item.time_tips}</b>
+				</strong>
+				<strong>
+					<s>N:</s>
+					{$item.reply_content}{if $item.reply_content_end}<em>{$item.reply_content_end}</em>{/if}
+					{if $item.reply_content_end}<span class="more_question"><i class="arrow_a"><i><i></i></i></i></span>{/if}
+				</strong>
+			 </span>
+		</li>
+		{/foreach}
+		{else}
+		<div class="account_messages">
+			<span class="nodata"><b class="icon"><i></i></b>{$LA_MESSAGE_NO_MESSAGES}</span>
+		</div>
+		{/if}
+	{/if}

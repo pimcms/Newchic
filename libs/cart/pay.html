@@ -1,0 +1,12 @@
+<form id="submitCheckout" method="post" action="{$homeUrl}index.php?com=shopcart">
+<div class="fixed_bag_pay">
+	<div class="bag_pay">
+        <span class="total">{$cartAmount}</span>
+        <span><b class="paypal"><i></i></b></span>
+		<input type="hidden" value="paypal" name="payCode">
+		<input type="hidden" value="checkoutSubmit" name="t">
+		<input type="hidden" id="needPhone" value="{$showPhoneNumber}">
+		<input type="hidden" name="phone" id="phone" value="{$addressPhone}">
+    </div>
+</div>
+</form>

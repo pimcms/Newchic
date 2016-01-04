@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="main_box">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>Reviews({$count})</h2>
+		</div>
+		
+		<div class="wrap">
+			<div class="image_reivews">
+                <ul class="reviews_list">
+                    {include file='libs/share/reviewlist.html'}
+                </ul>
+                <input type="hidden" id="total" name="total" value="{$total}"/>
+             </div>
+		</div>
+	</div>
+	</div>
+</div>
+<div class="fixed_ask_question fixed_submit_comment">
+    <form id="reviewForm">
+    	<input type="text" class="keyword inputchang" dvalue="Write a review" value="Write a review" name="contents" id="contents" msg="{$LC_CONTENT_LIMIT}" msg2="{$LC_CONTENT_MAX}">
+        <input type="button" class="btn" value="Submit" id="sub_btn">
+        <input type="hidden" id="media_id" name="media_id" value="{$mid}"/>
+        <input type="hidden" id="m_type" name="type" value="image"/>
+    </form>
+</div>
+
+{include file="libs/common/foot.html"}
+<script type="text/javascript" src="{$View->getValue('root_path')}/js/uploadImage.js"></script>
+
+
+</body>
+</html>

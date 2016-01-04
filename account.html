@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+{assign var = 'notShowPerson' value = 1}
+{assign var = 'notShowWish' value = 1}
+{include file = 'libs/common/head.html'}
+<div class="container">
+	<div class="main">
+		<div class="wrap">
+            <div class="account_item">
+            	<div class="account_user">
+                	<span class="img"><img src="{$personInfo.avatar_url}" /></span>
+					<span class="name"><i>{$personInfo.customers_name}</i><!-- <i class="grade">V{$personInfo.honor_level}</i> --></span>
+                    <span class="eidt"><a href="/index.php?com=account&t=personalInformation">{$LA_EDIT_PROFILE}</a></span>
+                </div>
+            </div>
+            <div class="account_item">
+            	<div class="account_coupon_point">
+               		<ul>
+                    	<li><a href="/index.php?com=account&t=my_coupons"><b>{$personInfo.couponsCount}</b>{$LA_COUPONS}</a></li>
+                    	<li><a href="/index.php?com=account&t=my_coupons"><b>12</b>Wishlist</a></li>
+                        <li><a href="index.php?com=account&t=point&type=1"><b>{$personInfo.pointsCount}</b>{$LA_POINTS}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="account_item">
+            	<div class="account_nav">
+                	<ul>
+                    	<li><a href="/index.php?com=account&t=orderlist"><s class="order"></s>{$LA_MY_ORDERS}</a><span class="arrow_d account_setting"><i><i></i></i></span></li>
+                        <li><a href="/index.php?com=account&t=address"><s class="address"></s>{$LA_MANAGE_ADDRESS_BOOK}</a><span class="arrow_d account_setting"><i><i></i></i></span></li>
+                        <li><a href="/index.php?com=account&t=resetpwd"><s class="password"></s>{$LA_ACCOUNT_CHANGE_PASSWORD}</a><span class="arrow_d account_setting"><i><i></i></i></span></li>
+                        <li><a href="/index.php?com=account&t=myMessages"><s class="message"></s>{$LA_MY_MESSAGE}</a><b class="num">{$personInfo.msgCount}</b><span class="arrow_d account_setting"><i><i></i></i></span></li>
+                        <li><a href="/index.php?com=account&t=my_doubts"><s class="doubts"></s>{$LA_MY_DOUBT}</a><b class="num">{$personInfo.doubtCount}</b><span class="arrow_d account_setting"><i><i></i></i></span></li>
+                        <!-- <li><a href="/index.php?com=account&t=memberCenter"><s class="member"></s>{$LA_MEMBER_CENTER}</a><span class="arrow_d account_setting"><i><i></i></i></span></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="account_item">
+            	<div class="account_signout"><a href="logout.html">{$LA_SING_OUT}</a></div>
+            </div>
+		</div>
+	</div>
+	<div class="wish"></div>
+</div>
+{literal}
+<script>
+$(document).ready(function() {
+	$.newchic_item.loadHeadCart();
+});
+</script>
+{/literal}
+{include file='libs/search/search.html'}
+{include file="libs/common/foot.html"}
+</body>
+</html>

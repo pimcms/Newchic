@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="bag_to_home">
+            	<a href="{$homeUrl}"><i></i></a>
+            </span>
+			<h2>Payment Center</h2>
+		</div>
+		
+		<div class="wrap">
+			<div class="paymentsuccess_item">
+            	<div class="info">
+                	<i></i>
+                    <h1>{$LS_SUCCESS_TIPS_ONE}</h1>
+                    <span>{$LS_SUCCESS_TIPS_TWO}</span>
+                </div>
+                <ul>
+                	<li><a href="{$homeUrl}index.php?com=account&t=orderlist">{$LC_VIEW_ORDERS}</a></li>
+                    <li><a href="{$homeUrl}">{$LS_CART_CONTINUE_SHOPPING}</a></li>
+                </ul>
+            </div>
+		</div>
+        
+	</div>
+</div>
+{include file="libs/common/foot.html"}
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="menu"></div>
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{if $address.address_book_id}{$LA_ADDRESS_EDIT_ADDRESS}{else}{$LA_ADDRESS_NEW_ADDRESS}{/if}</h2>
+           
+		</div>
+		<div class="wrap">
+            <div class="newaddress_item">
+            	<form id="addressForm">
+                    <ul class="newaddress_list">
+                        <li>(<i class="must">*</i>{$LA_ADDRESS_FIELDS_IS_REQUIRED}) </li>
+                        <li>
+                        	<i class="must">*</i>
+                        	<input type="text" name="full_name" value="{if $address.entry_lastname}{$address.entry_lastname} {$address.entry_firstname}{else}{$LA_DS_FULL_NAME}{/if}" dvalue="{$LA_DS_FULL_NAME}" class="inputchang" err_tip="{$LA_JOIN_NAME_TIPS}" err_tip2="{$LA_JOIN_NAME_TIPS2}"/>
+                       	</li>
+                        <li>
+                        	<i class="must">*</i>
+                        	<input type="text" name="address" value="{$address.entry_street_address|default:$LA_ADDRESS_STREET_ADDRESS}" dvalue="{$LA_ADDRESS_STREET_ADDRESS}" class="inputchang" err_tip="{$LA_ADDRESS_ADDRESS_TIP}"/>
+                       	</li>
+						
+                        <li class="nomust">
+                        	<input type="text" name="address2" value="{$address.entry_street_address2|default:$LA_ADDRESS_ADDRESS2_OPTIIONAL}" dvalue="{$LA_ADDRESS_ADDRESS2_OPTIIONAL}" class="inputchang"/>
+                       	</li>
+                        <li class="country">
+                        	<img src="{$address.country_img|default:$current_country_img}"/>
+							<u>{$address.countries_name|default:$current_country_name}</u>
+							<span class="arrow_d account_setting"><i><i></i></i></span>
+						</li>
+                        <li class="province">
+                        	<i class="must">*</i>
+                        	<input type="text" name="zone_name" value="{$address.entry_state|default:$LA_ADDRESS_SELECT_ZONE}" dvalue="{$LA_ADDRESS_SELECT_ZONE}" class="inputchang" err_tip="{$LA_ADDRESS_SELECT_STATE}"/>
+                        	<span class="arrow_d account_setting"><i><i></i></i></span>
+                        	<ul class="zone_list">
+                        		{if $zone_list}
+                        			{foreach from = $zone_list item = item}
+                        			<li data-id="{$item.zone_id}">{$item.zone_name}</li>
+                        			{/foreach}
+                        		{/if}
+                        	</ul>
+                       	</li>
+                        <li>
+                        	<i class="must">*</i>
+                        	<input type="text" name="city" value="{$address.entry_city|default:$LA_ADDRESS_CITY}" dvalue="{$LA_ADDRESS_CITY}" class="inputchang" err_tip="{$LA_DS_CITY_MSG}"/>
+                       	</li>
+                        <li>
+                        	<i class="must">*</i>
+                        	<input type="text" name="postcode" value="{$address.entry_postcode|default:$LA_ADDRESS_POSTAL_CODE}" dvalue="{$LA_ADDRESS_POSTAL_CODE}" class="inputchang" err_tip="{$LA_ADDRESS_POSTCODE_TIP}"/>
+                       	</li>
+                        <li>{$LA_ADDRESS_USE_AS_DEFAULT}<div class="switch_box"><span class="{if $address.default_address eq 1}switch switch_on{else}switch switch_off{/if}"><i class="button"></i></span></div></li>
+                        <li onClick="submitAddress(this);"><input type="button" class="btn" value="{$LA_ADDRESS_SAVE_REVIEW}"/></li>
+                    </ul>
+					{if !$hasLogin}
+                    <div class="notice">
+                    	<i>{$LC_NOTICE}:</i>
+                        {$LA_ADDRESS_NOTICE}
+                        <span class="reg"><a href="{$homeUrl}login.html">{$LC_LOIN_NOW}</a></span>
+                    </div>
+					{/if}
+                    <input type="hidden" name="country_id" id="country_id" value="{$address.entry_country_id|default:$current_country_id}"/>
+                    <input type="hidden" name="zone_id" id="zone_id" value="{$address.entry_zone_id|default:0}"/>
+                    <input type="hidden" name="default" id="code" value="0"/>
+                    <input type="hidden" name="address_id" value="{$address.address_book_id}"/>
+					<input type="hidden" name="addressKey" value="{$addressKey}"/>
+                </form>
+            </div>
+            
+		</div>
+	</div>
+	<div class="wish"></div>
+</div>
+
+{include file="libs/common/foot.html"}
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/jquery.form2.js"></script>
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/address.js"></script>
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/cart.js"></script>
+</body>
+</html>

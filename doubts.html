@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+	<body>
+		<div class="container">
+			<div class="main">
+				<div class="main_box">
+					<div class="index_header_top header_top dou_top">
+						<span class="prev">
+							<i class="arrow_c"><i><i></i></i></i>
+						</span>
+						<h2>{$LA_MY_DOUBT}</h2>					
+					</div>
+					
+					<div class="dou_wrap">
+						{if $doubtList}
+						<div class="tips">
+							<p>{$total}</p>
+						</div>
+						{/if}
+						{include file='libs/account/doubtlist.html'}
+						<input type="hidden" id="total" name="total" value="{$totalPage}"/>	
+				
+					</div>
+					
+					<div class="fixed_ask_question">
+					    <a class="quick_to_ask" href="/index.php?com=article&t=contact">{$LA_CONTINUE_ASK}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{include file="libs/common/foot.html"}
+		<script src="{$View->getValue('root_path')}/js/doubt.js"></script>
+	</body>
+</html>

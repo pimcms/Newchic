@@ -1,0 +1,11 @@
+{if $result.list}
+{foreach from = $result.list item = item}
+<li>
+	<span class="date">{$item.add_date}</span>
+	<span class="title">{$item.points}</span>
+	<span class="info">{$item.description}</span>
+</li>
+{/foreach}
+{else}
+<span class="nodata">{$LC_NO_DATA}</span>
+{/if}

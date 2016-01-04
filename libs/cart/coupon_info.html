@@ -1,0 +1,14 @@
+<div class="bag_item">
+	<h4 class="title">{$LS_COUPON_AND_POINTS}<i class="coupon_btn">{$LS_USECOUPON}</i></h4>
+	<span class="bag_coupon_tag">
+	{if $addCouponList}
+		{foreach from=$addCouponList item=coupon}
+			{$coupon.coupon} &nbsp; {$coupon.format_discount} &nbsp;<span style="color:red" class="clean_coupon">X</span>
+		{/foreach}
+	{elseif $discountInfo}
+		{$discountInfo.name} &nbsp; {$discountInfo.format_discount} &nbsp;<span style="color:red" class="clean_points">X</span>
+	{else}
+		{$View->sprintf('LS_COUPON_POINTS_TIPS', $couponNumber,$userpoints)}
+	{/if}
+	</span>
+ </div>

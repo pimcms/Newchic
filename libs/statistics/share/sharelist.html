@@ -1,0 +1,42 @@
+{if $reviewImages}
+{foreach from=$reviewImages item=item name=reviewImages}
+<li class="flg">
+    <span class="user"><img src="{$item.avatars_url}"></span>
+    <span class="name">
+        {$item.customers_name}
+        <!-- <i>{$item.add_date|date_format:'%b %d,%Y'}</i> -->
+        <i>{$item.time_tips}</i>
+    </span>
+    <span class="title">
+         {$item.image_title}
+    </span>
+    <span class="img"><a href="{$item.url}" alt="{$item.products_name}"><img src="{$item.image_url}"></a></span>
+    <span class="goods_info"><i><a href="{$item.url}">{$item.products_name}</a></i><s class="price">{$item.format_final_price}</s></span>
+    <div class="likecomment">
+        <span class="like" onClick="diggMedia(this,{$item.image_id});"><i></i>{$item.diggs}</span>
+        <span class="comment"><a href="/index.php?com=review&t=showMoreComment&id={$item.image_id}"><i></i></a>{$item.comments_count}</span>
+    </div>
+    {if $item.comments}
+    <div class="comment_item_list">
+        <span class="arrow_b"><i></i></span>
+            <dl>
+                {foreach from = $item.comments item=icom name=Imagecomment}
+                <dd>
+                    <b>{$icom.customers_nikename}:</b>{$icom.post_content|truncate:"100":" ..."}
+                </dd>
+                {/foreach}
+            </dl>
+        
+        {if $item.comments_count > 2}
+        <span class="more"><a href="/index.php?com=review&t=showMoreComment&id={$item.image_id}">{$LC_WAP_MORE_REVIEWS} &gt;</a></span>
+        {/if}
+    </div>
+    {/if}
+</li>
+{/foreach}
+{else}
+<span class="nodata"><b class="icon"><i></i></b>{$LC_WAP_NO_DATA}</span>
+{/if}
+<input type="hidden" id="total" name="total" value="{$total}"/>
+
+ 

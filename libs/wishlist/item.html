@@ -1,0 +1,16 @@
+{if $list}
+	<ul>
+	{foreach from=$list item=item name=wish}
+		{if $smarty.foreach.wish.index%2 eq 0}
+		{include file='libs/wishlist/item_li.html'}
+		{/if}
+	{/foreach}
+	</ul>
+	<ul>
+	{foreach from=$list item=item name=wish}
+		{if $smarty.foreach.wish.index%2 eq 1}
+		{include file='libs/wishlist/item_li.html'}
+		{/if}
+	{/foreach}
+	</ul>
+{/if}

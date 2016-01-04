@@ -1,0 +1,64 @@
+{literal}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".bg_cart_cotnainer .bg_cart_item").each(function(){
+			$(this).find("dt").height($(this).find("dd").height());
+		})
+	});
+</script>
+{/literal}
+<div class="bg_cart_cotnainer"> 
+	{foreach from=$area.productList item=item}
+	<div class="bg_cart_item">        			
+		<dl class="nc_clearfix">
+			<a href="{$item.url}" title="{$item.products_name}">
+			<dt>
+				<span class=""><img src="{$item.image_url}" /></span>
+			</dt>
+			</a>
+			<dd>
+				<div class="item_text">
+					<p><a href="{$item.url}" title="{$item.products_name}">{$item.products_name}</a></p>
+					{if $item.attributes}
+					<span class="item_size">
+						{foreach from=$item.attributes item=attr name=name}			        						
+						<small>{$attr.name}: <strong>{$attr.value}</strong></small>
+						{/foreach}
+					</span>
+					{/if}
+					<div class="qty">
+						<select class="sele_box" name="" onchange="$.NCCart.changeQty(this);" warehouse="{$block.warehouse}" cart_id="{$item.cart_id}">
+							{if $item.clearStock == 1}
+								{if $item.maximum == 0}
+									<option value="0" selected="selected">0</option>
+								{else}
+									{foreach from=$qtyList key=key item=num}
+									{if $key <= $item.maximum}
+									<option value="{$num}" {if $num eq $item.quantity}selected="selected"{/if}>{$num}</option>
+									{/if}
+									{/foreach}
+								{/if}
+							{else}
+								{foreach from=$qtyList item=num}
+								<option value="{$num}" {if $num eq $item.quantity}selected="selected"{/if}>{$num}</option>
+								{/foreach}
+							{/if}
+						</select>
+						<div class="i_arr">
+							<span class="arrow_a">
+								<i></i>
+							</span>	
+						</div>
+					</div>
+				</div>        					
+				<p class="fl_bot">
+					<span class="pri">{$item.format_total_price}</span>
+					<span class="slt saveforLater" cart_id="{$item.cart_id}"> ≡ {$LS_CART_SAVE_FOR_LATER}</span>
+					<span class="bg_item_i bg_item_ed" warehouse="{$block.warehouse}" cart_id="{$item.cart_id}" qty="{$item.quantity}"></span>
+					<span class="bg_item_i bg_item_rm" cart_id="{$item.cart_id}"></span>
+				</p>
+			</dd>
+		</dl>       	
+	</div>
+	{/foreach}
+</div>

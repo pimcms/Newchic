@@ -1,0 +1,14 @@
+{if $couponsList}
+{foreach from = $couponsList item = item key = key}
+<li class="flg">
+	<span class="title">{$item.coupon_name}</span>
+    <span class="info">{$item.coupon_description}</span>
+    <span class="code">{$LA_TIP_CODE}: <i>{$item.change_coupon_code}</i></span>
+    <span class="date">{$LA_TIP_EXPIRE}: {$item.coupon_expire_date}</span>
+</li>
+{/foreach}
+{else}
+<span class="nodata"><b class="icon"><i></i></b>{$LA_TIP_NO_COUPON}</span>
+{/if}
+
+ 

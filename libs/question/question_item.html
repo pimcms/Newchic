@@ -1,0 +1,11 @@
+{foreach from = $questionInfo item = item}
+<li>
+	<span class="user"><img src="{$item.avatar_url}"><b>{$item.customer_name}</b><i>{$item.add_time}</i><b class="view"><i></i></b></span>
+	<span class="info">{$item.content}</span>
+	<div class="reply">
+		<i class="arrow_b"><i></i></i>
+		<span class="info">{$item.reply_content}</span>
+		<span class="user"><b>By: NC-Staff</b><i>{$item.reply_time}</i></span>
+	</div>
+</li>
+{/foreach}

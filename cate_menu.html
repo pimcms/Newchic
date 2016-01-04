@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+<body>
+{assign var = 'back' value = 1}
+{include file="libs/common/head.html"}
+<div class="container index_container cart_container">
+	<div class="main">
+    	<div class="cate_view">			
+            <div class="search_box nc_clearfix">
+              	<form action="/index.php?com=search" method="post" onsubmit="return searchCheck();">
+		        	<input tppe="text" class="form_input" name="keywords" dvalue="Search"/>
+		        	<input type="submit" value=""/>
+		        </form>
+            </div>	        
+			<div class="sub_cate_box">
+				<ul>
+					{foreach from = $cate item = item key = key}
+					<li>
+						<div class="cate_top">
+							<a>{$item.name}</a>
+							<span class="arr">
+								<span class="arrow_a">
+									<i>
+										<i></i>
+									</i>
+								</span>		
+							</span>
+												
+						</div>
+						<div class="slide_cate_box">
+							<div class="sub_cate nc_clearfix">
+								<div class="sub_cate_l">
+									<div class="bg_img {$item.css_name}">
+										<a href=""></a>
+									</div>						
+								</div>
+								<div class="sub_cate_r">
+									{if $key eq 0}
+										{foreach from = $cate item = bitem key = bkey}
+											{if $bkey > 0}
+											<a href="{$bitem.url}">{$bitem.name}</a>
+											{/if}
+										{/foreach}
+									{else}
+										{foreach from = $item.childs item = citem key = ckey}
+										{if $ckey > 0}
+										<a href="{$citem.url}">{$citem.name}</a>
+										{/if}
+										{/foreach}
+									{/if}							
+								</div>
+							</div>
+						</div>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="wish"></div>
+</div>
+{literal}
+<script type="text/javascript">
+$(document).on('click','.sub_cate_box .cate_top',function(){
+		var $parent = $(this).parents("li")
+		if(!$parent.hasClass("show_mode")){
+			$parent.addClass("show_mode");
+			$(this).children(".arr").css({"webkitTransform":"rotate(180deg)","transform":"rotate(180deg)"});
+			$parent.children(".slide_cate_box").slideDown(200);				
+		}else{
+			$parent.removeClass("show_mode");
+			$(this).children(".arr").css({"webkitTransform":"rotate(0)","transform":"rotate(0)"});
+			$parent.children(".slide_cate_box").slideUp(200);
+		}
+	})
+</script>
+{/literal}
+{include file="libs/common/foot.html"}
+</body>
+</html>

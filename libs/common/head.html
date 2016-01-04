@@ -1,0 +1,25 @@
+<div class="head_nav header_top_fixed">	
+	{if $back eq 1}						
+	<a href="javascript:void(0);" class="icon_head_back"></a>
+	{else}
+	<a href="/index.php?com=category&t=categoryMenu" class="icon_head_menu"></a>
+	{/if}
+	{if !$notShowPerson}
+	<a href="{$homeUrl}account.html" class="icon_head_person"></a>
+	{/if}
+	{if !$notShowWish}
+	<div class="wish_icon">
+		<a href="javascript:;"><b></b></a>
+	</div>
+	{/if}
+	{if !$notShowCart}
+	<span class="i_cart">
+	<a href="{$httpsHomeUrl}shopping_cart.php">
+		<i>
+			<small class="num">0</small>
+		</i>
+	</a>
+	</span>
+	{/if}
+	<h1><a href="{$homeUrl}" class="logo">{$LC_NEWCHIC}</a></h1>
+</div>

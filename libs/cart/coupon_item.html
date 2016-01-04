@@ -1,0 +1,16 @@
+<div class="det_coupon_modal">
+	<div class="modal_copon_body">
+		<h4>{$LS_SELECT_A_COUPON}</h4>
+		{if $cartCoupons}
+		{foreach from = $cartCoupons item = item}
+		<div class="coupon_box">
+			<small>{$item.coupon_description}</small>
+			<small class="coupon_code">{$LS_CODE}:<strong>{$item.change_coupon_code}</strong></small>
+			<small>{$LS_EXPIRES_ON}: {$item.coupon_expire_date}</small>
+			<span>{$item.coupon_name}</span>
+		</div>
+		{/foreach}
+		{/if}	
+	</div>
+</div>
+  

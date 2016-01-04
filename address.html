@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="main_box">
+			<div class="index_header_top header_top">
+				<span class="prev">
+					<i class="arrow_c"><i><i></i></i></i>
+				</span>
+				<h2>{$LA_MANAGE_ADDRESS_BOOK}</h2>
+	            <a href="index.php?com=account&t=addressHandelTpl"><span class="righttextbtn">{$LS_DS_ADD}</span></a>
+			</div>
+			
+			<div class="wrap">
+				<div class="account_item">
+	            	{include file="libs/account/address_list.html"}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{include file="libs/common/foot.html"}
+<script>
+var	_total = "{$totalPage}";
+var _ok = '{$LA_OK}';
+var set_default_address_tips = "{$LA_SET_DEFAULT_ADDRESS}";
+var _tip = "{$LA_DELETE_ADDRESS}"; 
+</script>
+<script src="/{$View->getValue('root_path')}/js/address.js"></script>
+</body>
+</html>

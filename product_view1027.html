@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+<meta property="og:image"  content="{$shareImage}" />
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+	<!--<div class="det_modal">
+			<span class="close">×</span>
+			<div class="carouse_swipe det_modal_in">
+				<div class="carouse_swipe_box det_img_box">
+					<ul>
+						<li><img title="" alt="" src="/{$View->getValue('root_path')}/images/gray.gif" /></li>	                    
+					</ul>					
+				</div>
+				<ul class="carouse_btn">
+	                <li class="prev"><i>prev</i></li>
+	                <li class="next"><i>next</i></li>
+	            </ul>
+				<ul class="carouse_tab"></ul>
+			</div>
+		</div>-->
+		<div class="wrap">
+        	<div class="goods_detail">
+        	   <div class="head_nav header_top_fixed">
+				<span class="prev"><a href="javascript:;" onClick="$.newchic_item.historyGo();"><i class="arrow_c"><i><i></i></i></i></a></span>
+				<h4 class="head_nav_title">{$LP_PRODUCT_DETAILS}</h4>
+			   </div>
+                <div class="carouse_swipe detail_swipe">
+                    <div class="carouse_swipe_box">
+                        <ul>
+                          {foreach from=$productImage key=key item=item}
+                            <li><img value_id='{$key}' title="" alt="" src="{$item}" data-original="{$item}"/></li>
+                           {/foreach}
+                        </ul>
+                        {if $productInfo.discount}
+                        <strong class="arrow_a">
+                            <i></i>
+                            <s class="discount">{$productInfo.discount}</s>
+                            <s class="percent">%</s>
+                            <s class="off">off</s>
+                        </strong>
+                        {/if}
+                    </div>
+                   
+                    <ul class="carouse_btn">
+                        <li class="prev"><i>{$LC_WAP_PRODUCT_PREV}</i></li>
+                        <li class="next"><i>{$LC_WAP_PRODUCT_NEXT}</i></li>
+                    </ul>
+                    <ul class="carouse_tab">
+                    </ul>
+                </div>
+                  <div class="inhere">
+                	   <ul>
+			          {foreach from=$locationPath item=item name=locationPath}
+			          {if !$smarty.foreach.locationPath.last}
+			         <li><a href="{$item.link}">{$item.title}</a></li>
+			           <li>&raquo;</li>
+			             {else}
+			          <li><h1><a href="{$item.link}">{$item.title}</a></h1></li>
+			           {/if}
+			          {/foreach}
+			</ul>
+                </div>
+                <div class="wrap goods_top">
+                    <input id='products_id' type="hidden" value='{$productInfo.products_id}'/>
+                    <span class="title">{$productInfo.products_name}</span>
+                    <input id='products_url' type="hidden" value='{$productInfo.url}'/>
+                    <input id='share_image' type="hidden" value='{$shareImage}'/>
+                     <input id='sku' type="hidden" value='{$productInfo.sku}'/>
+                    <input id='products_name' type="hidden" value='{$productInfo.products_name}'/>
+                    <span class="price">{$productInfo.format_final_price}</span>
+                    <span class="old_price" style="display:none">{$productInfo.format_final_price}</span>
+                    <!-- <span class="sold">{$LP_NOTE_SOLD}: {$productInfo.soldTotal}</span> -->
+                </div>
+                
+                <div class="goods_item goods_top_tool">
+                    <ul>
+                        <li><b class="save {if $productInfo.wishlist}active{/if}" pid="{$productInfo.products_id}"><i></i></b><span>{$LC_SAVE}</span></li>
+                        <li><b class="share"><i></i></b><span>{$LC_WAP_PRODUCT_SHARE}</span></li>
+                        <li><b class="show"><i></i></b><span>{$LC_WAP_PRODUCT_BUYER_SHOR}</span></li>
+                    </ul>
+                </div>
+                 <!--  <div class="goods_item goods_poa">
+                    <dl class="goods_attr" option_id="379">
+                        <dt>Color:</dt>
+                        <dd>
+                        {foreach from=$productInfo.attributes.attr_list.379.values key=key item=item}     
+                            <a href="javascript:;" title="White" value_id="{$key}"><img src="{$item.smallImage}"></a>
+                       {/foreach}
+                        </dd>
+                    </dl>
+                    <dl class="goods_attr size" option_id="380">
+                        <dt>Size:</dt>
+                        <dd>
+                        {foreach from=$productInfo.attributes.attr_list.380.values item=item} 
+                         <a href="javascript:;" title="S" value_id="16221">{$item.value_name}</a>
+                        {/foreach}    
+                        </dd>
+                    </dl>
+                </div>-->
+                       <div class="goods_poas goods_wrap">
+                	<div class="module_detail_item">					   
+					    <div class="goods_poa_item itemss">
+					    	{if count($productInfo.attributes.attr_list.379.values) gt 0}
+					        <div class="goods_item_attr" option_id="52">
+					            <span class="title">{$LC_WAP_PRODUCT_COLOR}:</span>
+					            <ul class="color">
+					               {foreach name=info from=$productInfo.attributes.attr_list.379.values key=key item=item}  
+                                      {assign var=loop value=$smarty.foreach.info.index} 
+                                         <li value_id="{$key}" class=""><img src="{$item.smallImage}" viewImage="{$item.viewImage}" largeImage="{$item.largeImage}" title="{$item.value_name}"><i></i></li>
+                                    {/foreach}
+                                </ul>
+					        </div>
+					        {/if}
+					        <div class="goods_item_attr" option_id="52">
+					          {if !$bags}
+					            <span class="title">{$LC_WAP_PRODUCT_SIZE}:</span>
+					            <ul class="size size_ul">					                
+					                  {foreach name=info from=$productInfo.attributes.attr_list.380.values key=key item=item} 
+                                       {assign var=loop value=$smarty.foreach.info.index}   
+                                       <li value_id="{$key}" size_name="{$item.value_name}" class="">{$item.value_name}<s></s></li>
+                                      {/foreach}
+                                 </ul>
+                                 <!--尺寸转换模块start-->
+					            <div class="size_detail_box">
+					            {if $productInfo.sizeText}
+									{foreach from=$productInfo.sizeText item=item key=key}
+									<p val_name= "{$key}"><i class="close close_border">×</i>{$item}</p>
+									{/foreach}
+								{/if}
+					            </div>  
+								<!--尺寸转换模块end-->
+					            {/if}
+					        </div>
+					        <div class="goods_item_attr qty">
+					            <span class="title">{$LC_WAP_PRODUCT_QUANITY}:</span>
+					            <div class="quantity_box">    
+					                <span class="prev gray">-</span>
+					                <input id="qty" class="qty_val" type="text" maxlength="5" clearstock="0" autocomplete="off" maximum="" name="qty" oldqty="1" value="1">
+					                <span class="next">+</span>
+					            </div>
+					        </div>
+					        <p class="MaximumStock"></p>
+					    </div>
+					</div>
+					<div class="goods_poas_bottom addbag_box clearfix" id="addbag_box">
+						<div class="box">
+							<button class="buy_btn">{$LP_BUY_IT_NOW}</button>
+							<button class="addbag_btn">{$LP_ADD_TO_BAG}</button>
+					        <!--<span class="addbag">Add To Bag</span>-->
+					        <a href='{$httpsHomeUrl}shopping_cart.php'><span class="bag_info"><i class="bag"></i><b class="num">{if $cartNum}{$cartNum} {else}0{/if}</b></span></a>
+					    </div>
+					</div>						
+					
+					<div class="fixed_dialogs add_flase" id="fixed_dialogs">
+						<b>{$LC_WAP_PLEASE_CHOOSE_SIZE}</b>
+					</div>
+					
+					<div class="fixed_dialogs add_sucess" id="fixed_dialogs">
+						<b>{$LC_WAP_SUCCESS}</b>
+					</div>
+					
+                </div>
+                
+                 <div class="goods_item ask_question">
+                 	<a href="{$productInfo.questions_url}">
+                    <span class="ask">{$LP_ASK_A_QUESTION}</span>
+                    <span class="arrow_d account_setting"><i><i></i></i></span>
+                    </a>
+                 </div>
+                 <div class="goods_item description">
+                 	<h4 class="title">{$LP_ERROR_TYPE_DESC}</h4>
+                    <div class="description_info">
+                        <p>{$productInfo.description}<br />
+                      
+                    </div>
+                    <span class="detail_info_more"><a href="{$homeUrl}index.php?com=product&t=getDesc&products_id={$productInfo.products_id}">{$LP_READ_MORE} &gt;</a></span>
+                 </div>
+                 <div class="goods_item reviews">
+                 	<h4 class="title">{$LP_REVIEWS}<i class="write" id="write_review" data-id="{$productInfo.products_id}"></i></h4>
+                 	{if $reviewlist.list}
+                 	<div class="overall"><span class="rating">{$LC_WAP_OVERALL_RATING}:</span><span class="review_star"><a href="javascript:;"><i class="star"><i style="width:{$reviewlist.stat.amountPecent}%"></i></i>({$reviewlist.count})</a></span></div>
+                    <ul class="reviews_list">
+                    	{assign var='reviewList' value=$reviewlist.list}
+                    	{include file="libs/review/review_item_li.html"}
+                    </ul>
+                    {if count($reviewlist.list) eq 3}
+                    <span class="detail_info_more"><a href="/index.php?com=product&t=reviewsList&products_id={$productInfo.products_id}">{$LC_WAP_REVIEW_MORE} &gt;</a></span>
+                    {/if}
+                    {else}
+                    <!-- <div class="overall"><span class="rating noreview">Overall rating:</span><span class="review_star"><a href="#"><i class="star"><i style="width:0%"></i></i>(0)</a></span></div> -->
+                    <span class="nodata">{$LP_NONE_REVIEWS}</span>
+                    {/if}
+                    
+                 </div>
+                 <div class="goods_item buytogether">
+                 	<h4 class="title">{$LP_RECOMMEND}</h4>
+                    <div class="goodlist">
+                        <div class="itembox">
+                            <ul>
+                                {foreach from=$productList item=item name=likeproduct}
+									{if $smarty.foreach.likeproduct.index%2 eq 0}
+                                	{include file="libs/index/item_li.html"}
+                                	{/if}
+                                {/foreach}
+                            </ul>
+                            <ul>
+                                {foreach from=$productList item=item name=likeproduct}
+									{if $smarty.foreach.likeproduct.index%2 eq 1}
+                                	{include file="libs/index/item_li.html"}
+                                	{/if}
+                                {/foreach}
+                            </ul>
+                        </div>
+					</div>
+                 </div>
+             </div>
+		</div>
+		<nav class="fixed_backtotop detail_backtotop">
+			<ul>
+				<li>
+					<i class="totop_button"></i>					
+				</li>			
+			</ul>
+		</nav>
+	</div>
+	<div class="image_show">
+        <div class="image_show_item">
+        	{if $imgReview}
+        	<ul class="image_show_list">
+        		{foreach from = $imgReview item = img_item}
+            	<li>
+                	<span class="name">
+                    	{$img_item.customers_nickname}
+                    	<i>{$img_item.time_tips}</i>
+                    </span>
+                    <span class="title">
+                    	{$img_item.image_title}
+                    </span>
+                    <span class="img"><img src="{$img_item.image_url}"></span>
+                    <div class="likecomment">
+                    	<span class="like" onClick="diggMedia(this,{$img_item.image_id})"><i></i>{$img_item.diggs}</span>
+                        <a href="/index.php?com=review&t=showMoreComment&id={$img_item.image_id}"><span class="comment"><i></i>{$img_item.comments_count}</span></a>
+                    </div>
+                    {if $img_item.comments}
+                    <div class="comment_item_list">
+                    	<span class="arrow_b"><i></i></span>
+                        <dl>
+                        	{foreach from = $img_item.comments item = comment}
+                        	<dd><b>{$comment.customers_nikename}:</b>{$comment.post_content}</dd>
+                        	{/foreach}
+                        </dl>
+                        {if $img_item.comments_count > 2}
+				        <span class="more"><a href="/index.php?com=review&t=showMoreComment&id={$img_item.image_id}">{$LC_WAP_REVIEW_MORE} &gt;</a></span>
+				        {/if}
+                    </div>
+                    {/if}
+                </li>
+                {/foreach}
+            </ul>
+            {else}
+            <span class="nodata">
+                {$LP_NONE_IMAGE_REVIEWS}
+            </span>
+            {/if}
+            <span class="addimage" onClick="isPurchase({$productInfo.products_id});"><a href="javascript:void(0);"><i>+</i>{$LC_WAP_ADD_IMAGES}</a></span>
+        </div>
+    </div>
+</div>
+<div class="fixed_bottoms">
+	<div class="box clearfix">
+        <button class="buy_btn" onClick="selectStyle(1);">{$LP_BUY_IT_NOW}</button>
+		<button class="addbag_btn" onClick="selectStyle(0);">{$LP_ADD_TO_BAG}</button>  
+		<div class="bag_info_box">
+			<a href='{$homeUrl}index.php?com=shopcart'><span class="bag_info"><i class="bag"></i><b class="num">{if $cartNum}{$cartNum} {else}0{/if}</b></span></a>
+		</div>        
+    </div>
+</div>
+
+<!-- <nav class="fixed_bottom_addtobag" >
+	<div class="box">
+        <span class="prev"><a href="javascript:;" onClick="$.newchic_item.historyGo();"><i class="arrow_c"><i><i></i></i></i></a></span>
+        <span class="addbag">Add To Bag</span>
+        <span class="bag_info"><a href="{$homeUrl}index.php?com=shopcart"><i class="bag"></i></a><b class="num">{if $cartNum}{$cartNum} {else}0{/if}</b></span>
+    </div>
+</nav>-->
+<!-- <div class="module_detail_item" style="display:none">
+    <div class="goods_info">
+        <img src="{$productInfo.image_list.other_items.0}">
+        <span class="title">{$productInfo.products_name}</span>
+        <span class="price">{$productInfo.format_final_price}</span>
+    </div>
+    <div class="goods_poa_item">
+        <div class="goods_item_attr" option_id="379">
+            <span class="title">Color:</span>
+            <ul class="color">
+             {foreach name=info from=$productInfo.attributes.attr_list.379.values key=key item=item}  
+              {assign var=loop value=$smarty.foreach.info.index} 
+               <li value_id="{$key}" class="{if $loop==0}active {else}{/if}"><img src="{$item.smallImage}" title="black"><i></i></li>
+             {/foreach}
+              
+            </ul>
+        </div>
+        <div class="goods_item_attr" option_id="380">
+            <span class="title">Size:</span>
+            <ul class="size">
+             {foreach name=info from=$productInfo.attributes.attr_list.380.values key=key item=item} 
+               {assign var=loop value=$smarty.foreach.info.index}   
+                <li value_id="{$key}" class="{if $loop==0}active {else}{/if}">{$item.value_name}<s></s></li>
+             {/foreach}
+            </ul>
+        </div>
+        <div class="goods_item_attr goods_item_quantity">
+            <span class="title">Quanity:</span>
+            <div class="quantity_box">
+                <span class="prev gray">-</span>
+                <input id="qty" type="text" maxlength="5" clearstock="0" autocomplete="off" maximum="" name="qty" oldqty="1" value="1">
+                <span class="next">+</span>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+{include file="libs/common/foot.html"}
+
+{literal}
+<script>
+img_lazyload();
+</script>
+{/literal}
+<script src="/{$View->getValue('root_path')}/js/review.js"></script>
+<script src="/{$View->getValue('root_path')}/js/product.js"></script>
+<script src="/{$View->getValue('root_path')}/js/share.js"></script>
+<script>
+var pro_img = '{$productInfo.image_list.view.0}';
+var pro_name = '{$productInfo.products_name}';
+var pro_price = '{$productInfo.format_final_price}';
+</script>
+
+</body>
+</html>

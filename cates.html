@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="Expires" CONTENT="-1">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+		<meta http-equiv="Pragma" CONTENT="no-cache">
+		<meta name="keywords" content="wholesale Dresses online, Shop for the latest Dresses at great prices,high quality guaranteed for Dresses at newchic.com" />
+		<meta name="description" content="Dresses Wholesale, cheap Dresses" />
+		<title>Best Dresses Wholesale,Buy cheap Dresses at newchic.com</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link href="http://mbeta.newchic.com/templates/wap/images/logo_small.jpg" rel="Shortcut Icon">
+		<link href="http://mbeta.newchic.com/templates/wap/images/logo_small.jpg" rel="Bookmark">
+		<script type="text/javascript" src="http://mbeta.newchic.com/templates/wap/js/jquery-1.9.1.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="head_nav header_top_fixed">
+				<div class="menu_bar">
+					<a href="javascript:;">
+						<span></span>
+						<span></span>
+						<span></span>
+					</a>
+				</div>
+				<h1><a href="/index.html" class="logo">Newchic</a></h1>
+				<a class="detail_serach" href="javascript:;"><span class="i_search "></span></a>
+			</div>
+			<div class="menu">
+				<div class="profile">
+					<span class="img"><img src="" /></span>
+					<span class="signin">Hi, <a href="login.html">Sign In</a> or <a href="register.html">Join Us</a></span>
+				</div>
+				<ul class="menu_nav">
+					<li class="search"><a href="javascript:;"><i class="i_1"></i>Search</a></li>
+					<li><a href="http://mbeta.newchic.com/" class="active"><i class="i_2"></i>Home</a></li>
+					<li><a href="http://mbeta.newchic.com/index.php?com=category&t=initCategoriesList"><i class="i_3"></i>Categories</a></li>
+					<li><a href="https://mbeta.newchic.com/shopping_cart.php"><i class="i_4"></i>Shopping Bag<b class="bag_num"></b></a></li>
+					<li><a href="http://mbeta.newchic.com/index.php?com=clearance"><i class="i_5"></i>Clearance</a></li>
+					<li><a href="community.html"><i class="i_6"></i>Community</a></li>
+					<li><a href="http://mbeta.newchic.com/index.php?com=article&t=contact"><i class="i_9"></i>Contact us</a></li>
+					<li><a href="http://mbeta.newchic.com/index.php?com=index&t=setting"><i class="i_7"></i>Settings</a></li>
+					<li id="logout" style="display:none;"><a href="http://mbeta.newchic.com/index.php?com=account&t=logout"><i class="i_8"></i>Logout</a></li>
+				</ul>
+			</div>
+			
+			<script type="text/javascript">
+				$(document).on('click','.cate_fil_icon',function(){
+					$(".container .fil_box").addClass("model_mode").css({"webkitTransform":"translate(0,0)","transform":"translate(0,0)"});
+					if(browser.versions.iPhone || browser.versions.iPad) iNoBounce.enable();
+					$('html').addClass('sift_move');
+				});
+				
+				$(document).on('click','.cate_sort_icon',function(){
+					$(".container .sort_box").addClass("model_mode").css({"webkitTransform":"translate(0,0)","transform":"translate(0,0)"});
+					if(browser.versions.iPhone || browser.versions.iPad) iNoBounce.enable();
+					$('html').addClass('sift_move');
+				});
+				
+				$(document).on('click','.fil_box .fil_options button.cancel',function(){
+					$(".container .fil_box").removeClass("model_mode").css({"webkitTransform":"translate(-100%,0)","transform":"translate(-100%,0)"});
+					if(browser.versions.iPhone || browser.versions.iPad) iNoBounce.disable();
+					$('html').removeClass('sift_move');
+				});
+				
+				$(document).on('click','.sort_box .fil_options button.cancel',function(){
+					sort_box_close();				
+				});
+				
+				function sort_box_close(){
+					$(".container .sort_box").removeClass("model_mode").css({"webkitTransform":"translate(100%,0)","transform":"translate(100%,0)"});
+					if(browser.versions.iPhone || browser.versions.iPad) iNoBounce.disable();
+					$('html').removeClass('sift_move');	
+				}
+				
+				$(document).on('click','.fil_box .fil_item_box ul li ul.sub_fil_in li button',function(){
+					$(this).addClass("active").parent().siblings("li").children("button").removeClass("active");
+					$(this).parents(".fil_item").find("s").text($(this).text())
+					
+				});
+				
+				$(document).on('click','.fil_box .fil_options button.reset',function(){
+					$(".fil_box .fil_item_box ul li.fil_item").each(function(){
+						$(this).find("s").text("All");
+						$(this).children("ul.sub_fil_in").children("li:eq(0)").children("button").addClass("active");
+						$(this).children("ul.sub_fil_in").children("li:gt(0)").children("button").removeClass("active");
+					})
+				});
+				
+				$(document).on('click','.sort_box .fil_item_box ul li,.cate_fil_box .fil_item_box ul li',function(){
+					$(this).addClass("active").siblings("li").removeClass("active");
+					if($(this).parents(".cate_fil_box").length>0){
+						$(this).parents(".cate_fil_box").removeClass("cate_show").children(".cate_box").slideUp(200,function(){
+							$(".cate_fil_box .cate_fil .cate_side>span").fadeIn(100);
+							$(".sub_cate_box strong .arrow_a").css({"webkitTransform": "rotate(0deg)","transform":"rotate(0deg)"});
+						});
+					}else{
+						sort_box_close();
+					}
+					
+				});
+				
+				$(document).on('click','.sub_cate_box strong',function(){
+					if(!$(this).parents(".cate_fil_box").hasClass("cate_show")){
+						$(this).parents(".cate_fil_box").addClass("cate_show").children(".cate_box").slideDown(200);
+						$(".cate_fil_box .cate_fil .cate_side>span").fadeOut(100);
+						$(this).children(".arrow_a").css({"webkitTransform": "rotate(180deg)","transform":"rotate(180deg)"});
+					}else{
+						$(this).parents(".cate_fil_box").removeClass("cate_show").children(".cate_box").slideUp(200,function(){
+							$(".cate_fil_box .cate_fil .cate_side>span").fadeIn(100);
+							$(".sub_cate_box strong .arrow_a").css({"webkitTransform": "rotate(0deg)","transform":"rotate(0deg)"});
+						});
+					}
+					
+				});
+			
+				$(document).on('click','.fil_item_box>ul>li p',function(){
+					var $sub_fil=$(this).siblings(".sub_fil_in"),
+						$arrow_icon=$(this).children(".arr_down");
+					if(!$sub_fil.parent().hasClass("show_mode")){
+						$sub_fil.slideDown(200,function(){
+							$(this).parent().addClass("show_mode");
+						});
+						$arrow_icon.css({"webkitTransform": "rotate(180deg)","transform":"rotate(180deg)"});
+						$(this).parent().siblings("li.show_mode").find(".arr_down").css({"webkitTransform": "rotate(0deg)","transform":"rotate(0deg)"});
+						$(this).parent().siblings("li.show_mode").children(".sub_fil_in").slideUp(200,function(){
+							$(this).parent().removeClass("show_mode");
+						}).bind(this);
+					}else{
+						$sub_fil.slideUp(200).parent().removeClass("show_mode");
+						$arrow_icon.css({"webkitTransform": "rotate(0deg)","transform":"rotate(0deg)"});
+					}					
+				});
+			</script>
+			<div class="fil_box side_box">
+				<div class="fil_item_box">
+					<ul>
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>	
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>	
+						<li class="fil_item">
+							<p>
+								<small>Tops</small>
+								<s>All</s>
+								<span class="arr_down"></span>
+							</p>							
+							<ul class="sub_fil_in">
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+								<li><button>button</button></li>
+							</ul>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="fil_options">
+					<button class="reset">Reset</button>
+					<button class="cancel">Cancel</button>
+					<button class="filter">Filter</button>
+				</div>
+			</div>
+			<div class="sort_box side_box">
+				<div class="fil_item_box">
+					<ul>						
+						<li><small>Tops</small> <span class="checked"></span></li>
+						<li><small>Tops</small> <span class="checked"></span></li>						
+						<li><small>Tops</small> <span class="checked"></span></li>
+						<li><small>Tops</small> <span class="checked"></span></li>
+						<li><small>Tops</small> <span class="checked"></span></li>						
+						<li><small>Tops</small> <span class="checked"></span></li>
+										
+					</ul>
+				</div>
+				<div class="fil_options">					
+					<button class="cancel">Cancel</button>
+				</div>
+			</div>
+			<div class="main">				
+				<div class="main_box">
+					<!--<div class="index_header_top header_top header_top_fixed">
+                <span class="prev">
+                    <i class="arrow_c"><i><i></i></i></i>
+                </span>
+                <h2>Dresses</h2>
+                <span class="sequence"></span>
+            </div>-->
+
+					<div class="sequence_item">
+						<ul id="attr_sort" data-id="1">
+							<li data-sort="1" class="active">Most Popular<i></i></li>
+							<li data-sort="2">New Arrival<i></i></li>
+							<li data-sort="3">Price High to Low<i></i></li>
+							<li data-sort="6">Price Low to High<i></i></li>
+						</ul>
+					</div>
+					
+					
+					
+					<!--<script type="text/javascript">
+						$(document).on('click','.cate_fil_box .sub_cate_box strong',function(){
+							if(!$(this).hasClass("fil_show")){
+								$(this).addClass("fil_show");
+								$(this).parents(".cate_fil_box").children(".filter_item").slideDown(200);
+								if(browser.versions.iPhone || browser.versions.iPad) iNoBounce.enable();								
+								$(".mnc_model").fadeIn(function(){
+									if(browser.versions.iPhone || browser.versions.iPad) iNoBounce.enable();
+									$(".container .mnc_model").click(function(){
+										$.newchic_item.model_fade_out($(this));
+									})
+								})
+								
+							}else{
+								$(this).removeClass("fil_show");
+								$(this).parents(".cate_fil_box").children(".filter_item").slideUp(200);
+								if(browser.versions.iPhone || browser.versions.iPad) iNoBounce.disable();
+							}
+						})
+					</script>-->
+					<div class="cate_fil_box">
+						<div class="cate_fil nc_clearfix">
+							<div class="cate_side">
+								<span class="cate_fil_icon">
+									<!--FILTER <span></span>-->
+								</span>
+							</div>
+							
+							<div class="sub_cate_box">
+								<strong>TOPS
+									<span class="arrow_a">
+										<i>
+											<i></i>
+										</i>
+									</span>
+								</strong>
+							</div>
+							<div class="cate_side">
+								<span class="cate_sort_icon">
+									<!--SORT BY <span></span>-->
+								</span>
+							</div>
+						</div>
+						
+						<div class="side_box cate_box">
+							<div class="fil_item_box">
+								<ul>									
+									<li><small>Tops</small> <span class="checked"></span></li>	
+									<li><small>Tops</small> <span class="checked"></span></li>	
+									<li><small>Tops</small> <span class="checked"></span></li>	
+									<li><small>Tops</small> <span class="checked"></span></li>	
+									<li><small>Tops</small> <span class="checked"></span></li>	
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="wrap wrap_nav_box">
+						<!--<div class="categories_list_nav">
+							<ul>
+								<li class="active"><a href="javascript:void(0);" data-cat-id="3603"> All</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3662">Maxi Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3627">Lace Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3663">Chiffon Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3664">Vintage Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3676">Sexy Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3690">Summer Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3665">Long Sleeve Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3677">Print Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3670">Mini Dresses</a></li>
+								<li><a href="javascript:void(0);" data-cat-id="3660">Plus Size Dresses</a></li>
+							</ul>
+						</div>-->
+
+						<div class="goodlist">
+							<div class="itembox">
+								<ul id="firstUl">
+									
+									<li>
+										<a class="a_wrap" href="http://mbeta.newchic.com/mini-dresses-3670/p-988658.html" title="Boho Printed Spaghetti Strap Open Back Sexy Mini Dress ">
+											<span class="img">	
+			<span class="span_img">
+				<img class="bg_lazy" src="http://mbeta.newchic.com/templates/wap/images/grey.gif" data-original="http://img.newchic.com/thumb/view/upload/2015/07/SKU207737(10 (1).jpg" alt="Boho Printed Spaghetti Strap Open Back Sexy Mini Dress "/>
+			</span>
+											</span>
+											<span class="title">Boho Printed Spaghetti Strap Open Back Sexy Mini Dress </span>
+											<span class="price" oriprice="10.72">US$10.72</span>
+										</a>
+										<a class="addwish " pid="988658"><i></i></a>
+									</li>
+									<li>
+										<a class="a_wrap" href="http://mbeta.newchic.com/mini-dresses-3670/p-993865.html" title=" Casual Long Sleeve Chiffion Backless Mini Dress">
+											<span class="img">	
+			<span class="span_img">
+				<img class="bg_lazy" src="http://mbeta.newchic.com/templates/wap/images/grey.gif" data-original="http://img.newchic.com/thumb/view/upload/2015/09/SKU245063(1).jpg" alt=" Casual Long Sleeve Chiffion Backless Mini Dress"/>
+			</span>
+											<strong class="arrow_a">
+				<i></i>
+				<s class="discount">32</s>
+				<s class="percent">%</s>
+				<s class="off">off</s>
+			</strong>
+											</span>
+											<span class="title"> Casual Long Sleeve Chiffion Backless Mini Dress</span>
+											<span class="price" oriprice="9.69">US$9.69</span>
+										</a>
+										<a class="addwish " pid="993865"><i></i></a>
+									</li>
+								</ul>
+								<ul id="firstUl">
+									
+									<li>
+										<a class="a_wrap" href="http://mbeta.newchic.com/mini-dresses-3670/p-988658.html" title="Boho Printed Spaghetti Strap Open Back Sexy Mini Dress ">
+											<span class="img">	
+			<span class="span_img">
+				<img class="bg_lazy" src="http://mbeta.newchic.com/templates/wap/images/grey.gif" data-original="http://img.newchic.com/thumb/view/upload/2015/07/SKU207737(10 (1).jpg" alt="Boho Printed Spaghetti Strap Open Back Sexy Mini Dress "/>
+			</span>
+											</span>
+											<span class="title">Boho Printed Spaghetti Strap Open Back Sexy Mini Dress </span>
+											<span class="price" oriprice="10.72">US$10.72</span>
+										</a>
+										<a class="addwish " pid="988658"><i></i></a>
+									</li>
+									<li>
+										<a class="a_wrap" href="http://mbeta.newchic.com/mini-dresses-3670/p-993865.html" title=" Casual Long Sleeve Chiffion Backless Mini Dress">
+											<span class="img">	
+			<span class="span_img">
+				<img class="bg_lazy" src="http://mbeta.newchic.com/templates/wap/images/grey.gif" data-original="http://img.newchic.com/thumb/view/upload/2015/09/SKU245063(1).jpg" alt=" Casual Long Sleeve Chiffion Backless Mini Dress"/>
+			</span>
+											<strong class="arrow_a">
+				<i></i>
+				<s class="discount">32</s>
+				<s class="percent">%</s>
+				<s class="off">off</s>
+			</strong>
+											</span>
+											<span class="title"> Casual Long Sleeve Chiffion Backless Mini Dress</span>
+											<span class="price" oriprice="9.69">US$9.69</span>
+										</a>
+										<a class="addwish " pid="993865"><i></i></a>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+					<input type="hidden" id="cate_id" value="3603" />
+					<input type="hidden" id="cate_totalPage" value="15" />
+					<input type="hidden" id="cate_searchtag" value="" />
+				</div>
+			</div>
+		</div>
+		
+		<!--<nav class="fixed_bottom_menu">
+			<ul>
+				<li><i class="filter"></i></li>
+				<li><a href="javascript:;" class="index_serach"><i class="search"></i></a></li>
+				<li><a href="/index.php?com=shopcart"><i class="bag"></i><span class="num">0</span></a></li>
+			</ul>
+		</nav>-->
+		<div class="search_item" style="display:none;">
+			<div class="search">
+				<form action="/index.php?com=search" method="post" class="search_form" onsubmit="return searchCheck();">
+					<input type="text" class="keyword inputchang" name="keywords" dvalue="Search" value="Search" style="color: rgb(204, 204, 204);" autocomplete="off">
+					<input type="submit" class="btn" value="search">
+					<i class="close">×</i>
+				</form>
+				<span onclick="modal_remove();" class="cancel">Cancel</span> </div>
+			<div class="search_list">
+			</div>
+		</div>
+		<script src="js/common.js"></script>
+		<script src="http://mbeta.newchic.com/templates/wap/js/jq.modal.layer.js"></script>
+		<script src="http://mbeta.newchic.com/templates/wap/js/wishlist.js"></script>
+		<script src="http://mbeta.newchic.com/templates/wap/js/jq.lazyload.js"></script>
+		<script src="http://mbeta.newchic.com/templates/wap/js/inobounce.min.js"></script>
+		<script src="js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<!--BEGIN DC Monitor-->
+		<script src="//dc.banggood.com/js/bgd.js"></script>
+		<!--END DC Monitor-->
+		<script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
+		<script type="text/javascript">
+			var google_tag_params = {
+				ecomm_prodid: null,
+				ecomm_totalvalue: null,
+				ecomm_pagetype: "category",
+				section: "Dresses",
+				ecomm_pcat: "Dresses",
+				ecomm_currency: "USD"
+			};
+		</script>
+
+		<script type="text/javascript">
+			 /* <![CDATA[ */
+			var google_conversion_id = 939491640;
+			var google_custom_params = window.google_tag_params;
+			var google_remarketing_only = true;
+			/* ]]> */
+		</script>
+
+		<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+		<noscript>
+			<div style="display:inline;">
+				<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/939491640/?value=0&amp;guid=ON&amp;script=0" />
+			</div>
+		</noscript>
+		<script src="http://mbeta.newchic.com/templates/wap/js/category.js"></script>
+
+		<script>
+			$(document)
+				.ready(function() {
+					$.newchic_item.loadHeadCart();
+					$.newchic_item.reset_img_size();
+				});
+			img_lazyload();
+		</script>
+
+	</body>
+
+</html>

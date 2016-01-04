@@ -1,0 +1,14 @@
+<h2>{$LC_SELECT_LIST}</h2>
+{if $noLogin}
+	<div class="login_tips">{$LC_LOGIN_YOUR_ACCOUNT}.&nbsp;<a href="{$homeUrl}login.html">{$LC_LOIN_NOW}</a></div>
+{else}
+	{if $groupWishlist}
+	<ul class="index_wishlist">
+	{foreach from=$groupWishlist item=item}
+		<li class="change_group" group_id="{$item.group_id}" id="{$item.group_name}">
+			<a href="javascript:void(0);"><img src="{$item.img}"><i>{$item.group_name}({$item.number|default:0})</i></a>
+		</li>
+	{/foreach}
+	</ul>
+	{/if}
+{/if}

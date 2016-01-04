@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LC_WRITE_REVIEW}</h2>
+             <span class="righttextbtn graycolor" id="saveReview">{$LC_REVIEW_SUBMIT}</span>
+		</div>
+		
+		<div class="wrap">
+			<div class="write_reviews">
+             	<div class="goods_info">
+                	<span class="img">
+                		<a href="{$productInfo.url}" alt="{$productInfo.products_name}"><img src="{$productInfo.image_url}" alt="{$productInfo.products_name}"/></a>
+                    </span>
+                    <span class="title">{$productInfo.products_name}</span>
+                    <span class="price" oriprice="{$productInfo.final_price}">{$productInfo.format_final_price}</span>
+                    <span class="review_star"><a href="javascript:;"><i class="star"><i style="width:{$reviewAmount.amountPecent}%"></i></i>({$reviewAmount.amount})</a></span>
+                </div>
+             </div>
+		</div>
+        <div class="wrap">
+			<div class="write_reviews_score">
+             	<ul id="star">
+                	<li class="price" score="5" option="price"><b>{$LR_WRITE_REVIEW_OPTION1}:</b><i></i><i></i><i></i><i></i><i></i></li>
+                    <li class="quality" score="5" option="quantity"><b>{$LR_WRITE_REVIEW_OPTION2}:</b><i></i><i></i><i></i><i></i><i></i></li>
+                    <li class="appearance" score="5" option="appearance"><b>{$LR_WRITE_REVIEW_OPTION3}:</b><i></i><i></i><i></i><i></i><i></i></li>
+                    <li class="total" score="5"><b>{$LR_WRITE_REVIEW_OPTION4}:</b><i><i id="stlast" style="width:100%"></i></i></li>
+                </ul>
+            </div>
+		</div>
+         <div class="wrap">
+         	<div class="write_reviews_item">
+       	    <form>
+                <input type="text" value="{$LC_WAP_REVIEW_TITLE}" dvalue="{$LC_WAP_REVIEW_TITLE}" id="review_title" name="title" class="inputchang" err_tip="{$LR_WRITE_REVIEW_LIMIT3}"/>
+                <textarea name="comment" id="review_content" err_tip="{$LC_WIRTE_WORDS_LIMIT}"></textarea>
+                <i class="note_tips">{$LR_WRITE_REVIEW_FIELD4}</i>
+                <input type="hidden" id="products_id" name="products_id" value="{$productInfo.products_id}" />
+				<input type="hidden" id="price" name="price" value="5" />
+				<input type="hidden" id="quantity" name="quantity" value="5" />
+				<input type="hidden" id="appearance" name="appearance" value="5" />
+				<input type="hidden" id="rate" name="rate" value="5" />
+              </form>
+            </div>
+         </div>
+	</div>
+</div>
+
+
+{include file="libs/common/foot.html"}
+<script>
+var _view = '{$LC_REVIEW_VIEW}';
+</script>
+<script src="/{$View->getValue('root_path')}/js/review.js"></script>
+</body>
+</html>

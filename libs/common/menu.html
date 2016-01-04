@@ -1,0 +1,17 @@
+<div class="menu">
+	
+	<div class="profile">
+		{include file="libs/common/menu_login.html"}
+	</div>
+	<ul class="menu_nav">
+		<li class="search"><a href="javascript:;"><i class="i_1"></i>{$LC_SEARCH}</a></li>
+		<li><a href="{$homeUrl}" class="active"><i class="i_2"></i>{$LC_HOME}</a></li>
+		<li><a href="{$homeUrl}index.php?com=category&t=initCategoriesList"><i class="i_3"></i>{$LC_categories}</a></li>
+		<li><a href="{$httpsHomeUrl}shopping_cart.php"><i class="i_4"></i>{$LC_SHOPPING_BAG}<b class="bag_num"></b></a></li>
+		<li><a href="{$homeUrl}index.php?com=clearance"><i class="i_5"></i>{$LC_CLEARANCE}</a></li>
+		<li><a href="community.html"><i class="i_6"></i>{$LC_COMMUNITY}</a></li>
+		<li><a href="{$homeUrl}index.php?com=article&t=contact"><i class="i_9"></i>{$LC_CONTACT_US}</a></li>
+		<li><a href="{$homeUrl}index.php?com=index&t=setting"><i class="i_7"></i>{$LC_SETTINGS}</a></li>
+		<li id="logout" style="display:none;"><a href="{$homeUrl}index.php?com=account&t=logout"><i class="i_8"></i>{$LC_LOGOUT}</a></li>
+	</ul>
+</div>

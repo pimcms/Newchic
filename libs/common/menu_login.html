@@ -1,0 +1,10 @@
+{if $customer_name}
+	<a href="account.html">
+        <span class="img"><img src="{$customers_avatars}" /></span>
+        <span class="name"><i>{$customer_name}</i><!-- <i class="grade">V{$customers_level}</i> --></span>
+        <span class="points">Your valid points: <b>{$customers_points}</b> points</span>
+    </a>
+{else}
+	<span class="img"><img src="{$customers_avatars}" /></span>
+	<span class="signin">Hi, <a href="login.html">Sign In</a> or <a href="register.html">Join Us</a></span>
+{/if}

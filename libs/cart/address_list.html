@@ -1,0 +1,12 @@
+{if $addressList.list}
+<div class="bag_address_list">
+  <ul>
+  {foreach from=$addressList.list item=item key=key}
+    <li {if $key eq $addressList.select}class="active"{/if} key="{$key}"><span class="name">{$item.entry_lastname} {$item.entry_firstname}</span>
+	<span class="address">{$item.entry_street_address} {$item.entry_street_address2} {$item.entry_city},{$item.entry_state},{$item.countries_name} {$item.entry_postcode}</span>
+	{if $key eq $addressList.select}<i></i>{/if}
+	</li>
+  {/foreach}
+  </ul>
+</div>
+{/if}

@@ -1,0 +1,153 @@
+<div class="size_charts" id="size_charts">
+	<div class="title">{$LP_SIZE_CHARTS}</div>
+	<ul class="charts">
+		<li class="active">{$LP_WOMEN_CLOTH}</li>
+		{if $productInfo.showChart || 1}<li>{$LP_SIZE_CONVERSION_CHART}</li>{/if}
+	</ul>
+	<div class="size_table">
+		<div class="main">
+			<ul class="charts unit_switcher">
+				<li class="active">{$LP_INCHES}</li>
+				<li>{$LP_CENTIMETERS}</li>
+			</ul>
+			<div class="charts_box" >
+				<div>
+					<div class="table_box">
+						<table class="charts_hover">
+							
+							{foreach from=$sizeTable item=item}
+							<tr>
+								{foreach from=$item item=val}
+								<td>{$val}</td>
+								{/foreach}
+							</tr>
+							{/foreach}
+							
+						</table>
+					</div>
+				</div>
+				<div style="display:none;">
+					<div>
+						<div class="table_box">
+						<table class="charts_hover">
+							<tr>
+							{foreach from=$sizeHead item=item}
+								<th>{$item}</th>
+							{/foreach}
+							</tr>
+							{foreach from=$centimeters item=item}
+							<tr>
+								{foreach from=$item item=val}
+								<td>{$val}</td>
+								{/foreach}
+							</tr>
+							{/foreach}
+							
+						</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="display:none;" class="charts_box">
+		    <div>
+				<div class="table_box">
+				<table class="charts_hover">
+					<tr>
+						<th>Our Size</th>
+						<th>INT</th>
+						<th>US</th>
+						<th>UK</th>
+						<th>EU</th>
+						<th>AUS</th>
+					</tr>
+					<tr>
+						<td>XS(150/76A)</td>
+						<td>XXS</td>
+						<td>0</td>
+						<td>2</td>
+						<td>30</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>S(155/80A)</td>
+						<td>XXS</td>
+						<td>1</td>
+						<td>4</td>
+						<td>32</td>
+						<td>6</td>
+					</tr>
+					<tr>
+						<td>M(160/84A)</td>
+						<td>XS</td>
+						<td>2</td>
+						<td>6</td>
+						<td>34</td>
+						<td>8</td>
+					</tr>
+					<tr>
+						<td>L(165/88A)</td>
+						<td>S</td>
+						<td>4</td>
+						<td>8</td>
+						<td>36</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>XL(170/92A)</td>
+						<td>M</td>
+						<td>6</td>
+						<td>12</td>
+						<td>38</td>
+						<td>12</td>
+					</tr>
+					<tr>
+						<td>2XL(175/96A)</td>
+						<td>L</td>
+						<td>8</td>
+						<td>14</td>
+						<td>40</td>
+						<td>14</td>
+					</tr>
+					<tr>
+						<td>3XL(180/100A)</td>
+						<td>XL</td>
+						<td>10</td>
+						<td>16</td>
+						<td>42</td>
+						<td>16</td>
+					</tr>
+					<tr>
+						<td>4XL(185/104A)</td>
+						<td>2XL</td>
+						<td>12</td>
+						<td>18</td>
+						<td>44</td>
+						<td>18</td>
+					</tr>
+					<tr>
+						<td>5XL(190/108A)</td>
+						<td>3XL</td>
+						<td>14</td>
+						<td>20</td>
+						<td>46</td>
+						<td>20</td>
+					</tr>
+				</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{literal}
+<script>
+	$(".charts_hover td").click(function(){
+		var $this  = $(this);
+		var $table = $this.parents(".charts_hover");
+		$table.find(".active").removeClass("active");
+		$this.addClass("active").parent().children().eq(0).addClass("active");
+		$table.find("tr:eq(0)").children().eq($this.index()).addClass("active");
+	});
+	$(".charts").tabs("click");
+</script>
+{/literal}

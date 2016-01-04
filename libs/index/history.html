@@ -1,0 +1,6 @@
+<h2 class="recently">{$LC_RECENTLY}</h2>
+<div class="recently_item">
+	{foreach from = $history item = item}
+	<a href="{$item.url}"><img src="{$item.image_url}" alt="{$item.products_name}"/></a>
+	{/foreach}
+</div>

@@ -1,0 +1,21 @@
+{if $result.cateFilters}
+<ul>
+	{foreach from = $result.cateFilters item = item}
+	<li>
+		{$item.filter_name}
+		<s>{$LC_WAP_ATTR_ALL}</s>
+		<span class="arrow_a"><i><i></i></i></span>
+		<div class="categories_filter_box">
+			<div class="itembox">
+				{foreach from = $item.filter_values item = child_item}
+				<span><a href="javascript:;" data-id="{$child_item.filter_value_id}">{$child_item.filter_value}</a></span>
+				{/foreach}
+			 </div>
+		</div>
+	</li>
+	{/foreach}
+	<li>
+		<span class="reset">{$LC_WAP_RESET}</span> <span class="filter" id="filter_submit">{$LC_WAP_FILTER}</span>
+	</li>
+</ul>
+{/if}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+{$fbShopcartJS}
+<script>
+var JS_LOADING = '{$LS_LOADING}';
+var JS_SEL = '{$LS_NO_SELECT_SHIP_ADDRESS_MSG}';
+var JS_ENTER_PHONE = '{$LS_ENTER_PHONE}';
+var JS_REPRO = '{$LS_REMOVE_PRODUCT}';
+</script>
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top header_top_fixed">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+            <span class="bag_to_home">
+            	<a href="{$homeUrl}"><i></i></a>
+            </span>
+			<h2>{$LS_WAP_SHOPPING_BAG}</h2>
+		</div>
+		
+		<div class="wrap wrap_fixed_box">
+		{if $emptyCart}
+		{include file="libs/cart/empty.html"}
+		{else}
+             {include file="libs/cart/amount.html"}
+			 {foreach from=$blockList item=block}
+             <div class="bag_item">
+             	<div class="warehouse_list" id="list_1">
+                	<h4 class="title">{$LS_WHERE_MAIL}{$View->sprintf('LS_WAREHOUSE_TITLE', $block.warehouseName, $block.itemTotal)}</h4>
+					{foreach from=$block.areaList item=area}
+						{include file="libs/cart/item.html"}
+						{include file="libs/cart/shipping.html"}
+						{include file="libs/cart/sub_total.html"}
+					{/foreach}
+                </div>
+             </div>
+			 {/foreach}
+			 {include file="libs/cart/later_cart.html"}
+             {include file="libs/cart/address.html"}
+             {include file="libs/cart/phone.html"}
+             {include file="libs/cart/discount.html"}
+		{/if}	 
+		</div>		
+	</div>
+</div>
+{if !$emptyCart}
+{include file="libs/cart/pay.html"}
+{/if}
+{include file="libs/common/foot.html"}
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/cart.js"></script>
+</body>
+</html>

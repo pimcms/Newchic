@@ -1,0 +1,14 @@
+{if $history_data}
+	<ul>
+		{foreach from=$history_data item=item}
+		<li keywords="{$item.keywords}">{$item.keywords}</li>
+		{/foreach}
+	</ul>
+	<span class="clearhistory">{$LC_CLEAR_HISTORY}</span>
+{elseif $search_data}
+	<ul>
+		{foreach from=$search_data item=item}
+		<li keywords="{$item.keywords}">{$item.text}</li>
+		{/foreach}
+	</ul>
+{/if}

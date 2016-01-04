@@ -1,0 +1,16 @@
+<div class="bag_item">
+	<h4 class="title">{$LS_SHIPPING_ADDRESS_ONE}<i class="add_address">{$LS_ADD_NEW}</i></h4>
+	<div class="bag_address_tag">
+	{if $addressList}
+		{if $selCartAddress gt -1}
+		<b>{$adsItem.entry_lastname} {$adsItem.entry_firstname}<br>
+		{$adsItem.entry_street_address} {$adsItem.entry_street_address2} {$adsItem.entry_city},{$adsItem.entry_state},{$adsItem.countries_name} {$item.entry_postcode}</b>
+		{else}
+			{$LS_NO_SELECT_SHIP_ADDRESS_MSG}
+		{/if}
+		<span class="arrow_d account_setting"><i><i></i></i></span>
+	{else}
+		<span class="nodata">{$LS_NO_ADDRESS}</span>
+	{/if}
+	</div>
+ </div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LN_WAP_FORGOT_PASSWORD}</h2>
+            <span class="righttextbtn graycolor sendemail" onClick="submitLoginPannel(this);">{$LN_WAP_SEND}</span>
+		</div>
+		
+		<div class="wrap">
+			<div class="login">
+				
+				<form class="loginPannel" method="post" action="#">
+					<ul>
+                        <li><input type="text" id="for_email" class="email validate inputchang" rule="email" value="Email" dvalue="Email"  name="email"></li>
+						
+					</ul>
+				</form>
+				<span class="forgotpass_text">
+                	{$LN_WAP_PASSWORD_NOTICE}
+				</span>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>
+
+
+{include file="libs/common/foot.html"}
+</body>
+</html>

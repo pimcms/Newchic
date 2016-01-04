@@ -1,0 +1,18 @@
+<li>
+	<span class="img">
+		<a href="{$item.url}" title="{$item.products_name}">
+			<img src="{$item.image_url}" alt="{$item.products_name}"/>
+			{if $item.discount > 5}
+			<strong class="arrow_a">
+				<i></i>
+				<s class="discount">{$item.discount}</s>
+				<s class="percent">%</s>
+				<s class="off">off</s>
+			</strong>
+			{/if}
+		</a>
+		<b class="addwish {if $item.wishlist}active{/if}" pid="{$item.products_id}"><i></i></b>
+	</span>
+	<span class="title"><a href="{$item.url}" title="{$item.products_name}">{$item.products_name}</a></span>
+	<span class="price" oriprice="{$item.final_price}">{$item.format_final_price}</span>
+</li>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+    	<div class="main_box">
+            <div class="index_header_top header_top header_top_fixed">
+                <span class="prev">
+                    <i class="arrow_c"><i><i></i></i></i>
+                </span>
+                <h2>{$result.cat_name}</h2>
+                <span class="sequence"></span>
+            </div>
+            <div class="sequence_item">
+                <ul id="attr_sort" data-id="1">
+                    {foreach from=$sortList item=item name = sort}
+                    <li data-sort="{$item.value}" {if $smarty.foreach.sort.index eq 0}class="active"{/if}>{$item.name}<i></i></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="filter_item categories_filter">
+                {include file="libs/category/cate_filter.html"}
+            </div>
+            <div class="wrap wrap_nav_box">
+            	{if $result.cat_Childs}
+                <div class="categories_list_nav">
+                    <ul>          	
+                        <li class="active"><a href="javascript:void(0);" data-cat-id="{$result.cat_Childs.0.parent_id}">{$LC_WAP_ATTR_ALL}</a></li>
+                        {foreach from = $result.cat_Childs item = cat_child_item}
+                        <li><a href="javascript:void(0);" data-cat-id="{$cat_child_item.categories_id}">{$cat_child_item.categories_name}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+                {/if}
+                <div class="goodlist">
+                    <div class="itembox">
+                        {assign var = 'productList' value = $result.list}
+                        {include file="libs/category/item.html"}
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="cate_id" value="{$result.cat_id}"/>
+			<input type="hidden" id="cate_totalPage" value="{$result.totalPage}"/>
+            <input type="hidden" id="cate_searchtag" value=""/>
+        </div>
+	</div>
+</div>
+<nav class="fixed_bottom_menu">
+	<ul>
+		<li><i class="filter"></i></li>
+		<li><a href="javascript:;" class="index_serach"><i class="search"></i></a></li>
+		<li><a href="/index.php?com=shopcart"><i class="bag"></i><span class="num">0</span></a></li>
+	</ul>
+</nav>
+{include file='libs/search/search.html'}
+{include file='libs/common/foot.html}
+<script src="/{$View->getValue('root_path')}/js/category.js"></script>
+{literal}
+<script>
+$(document)
+.ready(function(){
+	$.newchic_item.loadHeadCart();
+	$.newchic_item.reset_img_size();
+});
+img_lazyload();
+</script>
+{/literal}
+
+</body>
+</html>

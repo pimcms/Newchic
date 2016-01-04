@@ -1,0 +1,37 @@
+
+	/* Reset */
+	html{ height:100%;}
+	body{ height:100%;padding:0;margin:0;line-height:1; font-size:12px; -webkit-text-size-adjust:none; color:#333333; background:#ffffff;}
+	body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,textarea,p {padding:0; margin:0; font-weight: normal; outline:none; font-family:Arial,Helvetica,sans-serif;}
+	th{ text-align:left;}
+	select,input,textarea{ outline:none; font-size:12px; background:#FFFFFF;}
+	img { border: 0;}
+	ol,ul {list-style:none;}
+	li{ vertical-align:top;}
+	h1,h2,h3,h4,h5,h6 { font-size: 100%;}
+	table { border-collapse:collapse;border-spacing:0;}
+	a{text-decoration:none; color:#333; outline:none;}
+	a:hover{color:#e33057; text-decoration:underline;}
+	
+	.container{ margin:0 auto; max-width:640px;position:relative;padding:10px;}
+	.charts_box table{border:1px #dddddd solid;}
+	.charts_box table tr{ text-align:center; height:20px; line-height:20px; border-bottom:1px #dddddd solid;}
+	.charts_box table tr th{ padding:0 12px; text-align:center; background:#f9f9f9; border-right:1px #dddddd solid;}
+	.charts_box table tr td{ padding:0 12px; text-align:center; border-right:1px #dddddd solid;}
+	.charts_box .specification{ margin-top:5px;}
+	.charts_box .specification .title{ font-size:16px; font-weight:bold; height:35px;}
+	.measurement{ margin-top:10px;}
+	.measurement .title{ font-size:16px; font-weight:bold; line-height:2;}
+	.measurement span{ display:block; overflow:hidden; font-size:14px; line-height:1.4;}
+	.disclaimer{ margin-top:20px; font-size:14px;}
+	.disclaimer .title{ font-size:16px; font-weight:bold; height:1.2; color:#e33057;}
+	
+	.size_charts .title{ font-size:16px; margin-top:20px; display:block; font-weight:bold; margin-bottom:10px;}
+	.size_charts .charts{ overflow:hidden;}
+	.size_charts .charts li{ float:left; background:#efefef; padding:3px 13px 3px 13px; cursor:pointer; font-size:14px; line-height:22px;}
+	.size_charts .charts .active{ background:#111111; color:#FFFFFF;}
+	.size_charts .charts_hover{ margin-top:10px;}
+	.size_charts .charts_hover .active{ background:#ff6183; color:#FFFFFF;}
+	.size_charts .size_table{ margin-top:12px;}
+	.table_box{margin:10px 0;overflow-x:scroll;-webkit-transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-webkit-perspective:1000;-webkit-scrollbar:none;-webkit-overflow-scrolling:touch;}
+	

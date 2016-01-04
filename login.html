@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+<script type="text/javascript" src="/{$View->getValue('root_path')}/js/fb.js" ></script>
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LA_R_LOGIN}</h2>
+		</div>
+		
+		<div class="wrap">
+			<div class="login">
+				<span class="title_tips">{$LA_JOIN_US}</span>
+				<form class="loginPannel" method="post" action="" onSubmit="return submitLoginPannel(this);">
+					<input type="hidden" name="t" value="login"/>
+					<ul>
+						<li><input type="text" class="username validate inputchang" rule="email" value="Email" dvalue="{$LA_EMAIL}"  name="email"></li>
+						<li>
+                        	<span class="pwdtip">{$LA_PASSWORD}</span>
+                        	<input type="password" class="password validate inputchang" rule="password" value="" dvalue="" name="pwd"><a href="/index.php?com=account&t=findpwd1"><i class="info">?</i></a></li>
+						<li><input type="submit" value="{$LA_R_LOGIN}" class="submit"></li>
+					</ul>
+				</form>
+				<span class="or"><i>or</i></span>
+				<a class="facebbok" href="javascript:void(0);"><span class="log_facebook"><i></i>{$LA_LOG_IN_WITH_FACEBOOK}</span></a>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>
+
+
+{include file="libs/common/foot.html"}
+</body>
+</html>

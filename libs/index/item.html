@@ -1,0 +1,16 @@
+{if $recommend}
+	<ul>
+	{foreach from=$recommend item=item name=recommend}
+		{if $smarty.foreach.recommend.index%2 eq 0}
+		{include file='libs/index/item_li.html'}
+		{/if}
+	{/foreach}
+	</ul>
+	<ul>
+	{foreach from=$recommend item=item name=recommend}
+		{if $smarty.foreach.recommend.index%2 eq 1}
+		{include file='libs/index/item_li.html'}
+		{/if}
+	{/foreach}
+	</ul>
+{/if}

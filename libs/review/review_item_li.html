@@ -1,0 +1,10 @@
+{if $reviewList}
+{foreach from = $reviewList item = item}
+<li>
+	<span class="user"><img src="{$item.avatars_url}">{$item.customers_name}<s class="date">{$item.time_tips}</s></span>
+	{assign var='averageRating' value=$item.reviews_rating/5*100|string_format:"%.1f"}
+	<span class="title"><b class="review_star"><a href="javascript:void(0);"><i class="star"><i style="width:{$averageRating}%"></i></i></a></b>{$item.reviews_title}</span>
+	<span class="info">{$item.reviews_text}</span>
+</li>
+{/foreach}
+{/if}

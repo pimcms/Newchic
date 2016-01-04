@@ -1,0 +1,14 @@
+<div class="shipping_total">
+	<span class="title">{$LS_ITEM_SHIPPING}</span>
+	<div class="shipping_box">
+		<strong>
+			<b>{$block.defaultShipName}</b>
+			<i class="arrow_a"><i><i></i></i></i>
+		</strong>
+		<span class="shipping_list">
+			{foreach from=$block.shipmentList key=key item=shipment}
+			<u {if $key eq $block.defaultShip}class="active"{/if} code="{$key}" warehouse="{$block.warehouse}">{$shipment}<s></s></u>
+			{/foreach}
+		</span>
+	</div>
+</div>

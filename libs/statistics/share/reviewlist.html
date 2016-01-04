@@ -1,0 +1,17 @@
+{if $comments}
+{foreach from=$comments item=item}
+<li>
+    <span class="img"><img src="{$item.avatars_url}"></span>
+    <span class="name">{$item.customers_nikename}</span>
+    <!-- <span class="date">{$item.post_add_datetime}</span>                        -->
+    <span class="date">{$item.time_tips}</span>                       
+    <span class="info">{$item.post_content}</span>
+</li>
+{/foreach}
+{else}
+<!-- <span class="nodata"><b class="icon"><i></i></b>no data...</span> -->
+<p align="center" style="padding-top:18rem;" class="nodata">{$LC_NO_DATA}</p>
+{/if}
+
+
+ 

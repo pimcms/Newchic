@@ -1,0 +1,10 @@
+<div class="wrap">
+	<div class="index_sort">
+	{foreach from=$wapNavs item=item name=nav}
+		<a href="{$item.url}">
+			<i class="i_{$item.css}"></i>
+			<span>{$item.name}</span>
+		</a>
+	{/foreach}
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+    	<div class="main_box">
+            <div class="index_header_top header_top">
+                <span class="prev">
+                    <i class="arrow_c"><i><i></i></i></i>
+                </span>
+                <h2>Clearance</h2>
+                <span class="sequence"></span>
+            </div>
+            <div class="clearance_item">
+                <ul id="attr_sort" data-id="1">
+                    {foreach from=$sortList item=item}
+                    <li data-sort="{$item.value}">{$item.name}<i></i></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="filter_item" id="clearance">
+                <ul id="attr_cat_id" data-id="0">
+                    {foreach from = $cate item = item}
+                    <li data-id="{$item.cat_id}">{$item.name}<i></i></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="wrap">
+                <div class="goodlist">
+                    <div class="itembox">
+                        {assign var = 'productList' value = $result.list}
+                        {include file="libs/category/item.html"}
+                    </div>
+                </div>
+            </div>
+         </div>
+	</div>
+</div>
+<nav class="fixed_bottom_menu">
+	<ul>
+		<li><i class="filter"></i></li>
+		<li><i class="search"></i></li>
+		<li><a href="/index.php?com=shopcart"><i class="bag"></i><span class="num">0</span></a></li>
+	</ul>
+</nav>
+{include file='libs/search/search.html'}
+{include file='libs/common/foot.html}
+<script src="/{$View->getValue('root_path')}/js/clearance.js"></script>
+{literal}
+<script>
+$(document)
+.ready(function(){
+	$.newchic_item.loadHeadCart();
+})
+</script>
+{/literal}
+</body>
+</html>

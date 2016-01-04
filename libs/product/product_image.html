@@ -1,0 +1,19 @@
+<div class="carouse_swipe detail_swipe">
+	<div class="carouse_swipe_box">
+		<ul>
+			{foreach from = $productImage key = key item = item}
+			<li><img value_id='{$key}' title="{$productInfo.products_name}" alt="" src="{$item}" data-original="{$item}"/></li>
+			{/foreach}
+		</ul>								
+	</div>
+	<ul class="carouse_btn">
+		<li class="prev"><i> {$LC_WAP_PRODUCT_PREV}</i></li>
+		<li class="next"><i> {$LC_WAP_PRODUCT_NEXT}</i></li>
+	</ul>
+	<ul class="carouse_tab"></ul>
+	
+	<div class="det_discount">
+		<span><strong>37</strong>%</span>
+		<small>off</small>
+	</div>
+</div>

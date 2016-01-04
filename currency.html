@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="menu"></div>
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LC_CURRENCY}</h2>   	
+		</div>
+		
+		<div class="wrap">
+            <div class="currency_item">
+            	<ul>
+				{foreach from=$currencyList item=item}
+                	<li {if $item.name eq $selCurrency}class="active"{/if} sel="{$item.name}"><b>{$item.name}</b>{$item.tag}{if $item.name eq $selCurrency}<i></i>{/if}</li>
+				{/foreach}
+                </ul>
+            </div>
+		</div>
+	</div>
+	<div class="wish"></div>
+</div>
+
+{include file="libs/common/foot.html"}
+<script language="javascript">
+var referer = "{$referer}";
+var currency = "{$selCurrency}";
+{literal}
+$('.currency_item ul li').click(function(){
+	var selected_currency = $(this).attr('sel');
+	if(currency!=selected_currency){
+		$.ajax({
+			url:'/index.php?com=ajax&t=setCurrency',
+			data:{'toCurrency':selected_currency},
+			type:'GET',
+			success:function(){
+				if(typeof referer != 'undefined' && referer != null && referer != "" ){
+					window.location.href=referer;
+				}else{
+					window.history.back();
+				}
+			}
+		})
+	}
+});
+{/literal}
+</script>
+</body>
+</html>

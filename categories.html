@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+{assign var = 'pageTitle' value = $LC_WAP_CATEGORIES}
+{include file = 'libs/common/head_title.html'}
+<div class="container">
+	<div class="main">
+		<div class="wrap">
+            <div class="categories_item">
+            	<ul class="categories_list">
+            		{foreach from = $cate item = item}
+						<li>
+							<a href="{$item.url}">
+							    <i class="{$item.css_name}"></i>
+							    <span>{$item.name}</span>
+							</a>
+						</li>
+                      {/foreach}                    
+                </ul>
+            </div>
+		</div>
+	</div>
+	<div class="wish"></div>
+</div>
+{include file='libs/search/search.html'}
+{include file="libs/common/foot.html"}
+</body>
+</html>

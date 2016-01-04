@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="libs/common/meta.html"}
+</head>
+
+<body>
+<div class="container">
+	<div class="main">
+		<div class="index_header_top header_top">
+			<span class="prev">
+				<i class="arrow_c"><i><i></i></i></i>
+			</span>
+			<h2>{$LA_ORDER_DETAILS}</h2>
+           
+		</div>
+		<div class="wrap">
+            <div class="account_item">                
+                <div class="account_orders">
+                	<div class="orders_list orders_detail">
+                    	<h4>{$LA_ORDER_INFORMATION}</h4>
+                        <ul>
+                            <li><u>{$LA_AFFILIATE_ORDER_STATUS}:</u><i class="status">{$orderInfo.orders_status_name}</i></li>
+                            <li><u>{$LA_ORDER_DATE}:</u>{$orderInfo.date_purchased|date_format:"%b %d, %Y"}</li>
+                            <li><u>{$LA_ORDER_NO}:</u>{$orderInfo.orders_id}</li>
+                            {if $orderInfo.track_number != ' '}<li><u>{$LA_TRACKING_NUMBER}:</u>{$orderInfo.track_number}</li>{/if}
+                            <!-- <li><u>{$LA_WAREHOUSE}:</u>{$orderInfo.currency}</li> -->
+                        </ul>
+                    </div>
+                    <div class="orders_list">
+                    	<h4>{$LA_PRODUCT_LIST}</h4>
+                        <ul>
+                        	{assign var = 'productList' value = $orderInfo.productList}
+                            {include file="libs/order/productlist.html"}
+                        </ul>
+                    </div>
+                    <div class="orders_list">
+                    	<h4>{$LA_SHIPPING_METHOD}</h4>
+                        <span class="order_detail_tag">{$orderInfo.shipping_method}</span>
+                    </div>
+                    <div class="orders_list">
+                    	<h4>{$LA_SHIPPING_ADDRESS}</h4>
+                        <span class="order_detail_tag">{$orderInfo.delivery_name}<br />{$orderInfo.billing_street_address},{$orderInfo.delivery_city}, {$orderInfo.delivery_state},{$orderInfo.delivery_country}  {$order.delivery_postcode}</span>
+                    </div>
+                     <div class="orders_list">
+                    	<h4>{$LA_PAYMENT_METHOD}</h4>
+                        <span class="order_detail_tag">{$orderInfo.payment_method}</span>
+                    </div>
+                    <div class="orders_list orders_detail">
+                    	<h4>{$LA_DS_TOTAL}</h4>
+                     	 <ul>
+                     	 	{foreach from=$orderInfo.orderTotal item=total}
+                         		<li><u>{$total.title}:</u>{$total.text}</li>
+                        	{/foreach}
+                        </ul>
+                    </div>
+                     <!-- <div class="orders_list">
+                     	<span class="orders_pay"><a href="#">{$LA_APPLY_REFUND}</a></span>
+                     </div> -->
+              	</div>
+            </div>
+		</div>
+	</div>
+</div>
+{include file="libs/common/foot.html"}
+</body>
+</html>

@@ -1,0 +1,5 @@
+{if $discountList}
+{foreach from=$discountList item=discount}
+<li class="discountLi">{$discount.name}:<span>{$discount.format_discount}</span></li>
+{/foreach}
+{/if}
